@@ -1,10 +1,29 @@
-import React from "react"
+import React, { ReactNode } from "react"
 import PropTypes from "prop-types"
 import Link from "next/link"
 
-const NLink = ({ href, to, className, activeClassName, children }) => {
+interface NLinkProps {
+	href?: string | { url?: string }
+	to?: string
+	className?: string
+	activeClassName?: string
+	children: ReactNode
+}
+
+const NLink = ({
+	href,
+	to,
+	className,
+	activeClassName,
+	children,
+}: NLinkProps) => {
 	let NLinkElement
-	let nlinkProps = {}
+	let nlinkProps: {
+		href?: string | { url: string }
+		to?: string
+		target?: string
+		rel?: string
+	} = {}
 
 	if (to) {
 		NLinkElement = Link
@@ -15,6 +34,7 @@ const NLink = ({ href, to, className, activeClassName, children }) => {
 		NLinkElement = "a"
 		if (typeof href === "string") {
 			nlinkProps.href = href
+		} else {
 		}
 		// to open the link on a new tab, make href an object with the property "url"
 		if (typeof href === "object") {
