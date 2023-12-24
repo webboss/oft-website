@@ -3,7 +3,7 @@ import ctl from "@netlify/classnames-template-literals"
 import { Menu } from "./menu"
 import { NLink } from "../../nlink"
 import { Button } from "../../button"
-// import MenuIcon from "svgs/menu.svg"
+import MenuIcon from "../../../svgs/menu.svg"
 import Image from "next/image"
 
 const NavBar = () => {
@@ -50,8 +50,7 @@ const NavBar = () => {
 const Hamburger = ({ onToggle }) => {
 	return (
 		<button className={hamburgerButton} onClick={onToggle}>
-			Menu
-			{/* <MenuIcon className='md:w-auto w-[27px]' /> */}
+			<MenuIcon className='md:w-auto w-[27px]' />
 		</button>
 	)
 }

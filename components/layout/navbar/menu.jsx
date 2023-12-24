@@ -2,7 +2,7 @@ import React from "react"
 import ctl from "@netlify/classnames-template-literals"
 
 import { NLink } from "../../nlink"
-// import CloseIcon from "svgs/close.svg"
+import CloseIcon from "../../../svgs/close.svg"
 import Container from "../../container"
 import { Text } from "../../text"
 import menulist from "../../../config/menu.json"
@@ -14,8 +14,7 @@ const Menu = ({ onToggle }) => {
 			<Container>
 				<header className={headerStyle}>
 					<button className={closeButtonStyle} onClick={onToggle}>
-						Close
-						{/* <CloseIcon width={32} className='md:w-[32px] w-[20px]' /> */}
+						<CloseIcon width={32} className='md:w-[32px] w-[20px]' />
 					</button>
 
 					<NLink to='/'>
