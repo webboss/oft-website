@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import React from "react"
 
 import ctl from "@netlify/classnames-template-literals"
@@ -27,9 +26,10 @@ interface TextProps {
 	color?: String
 	weight?: String
 	className?: String
-	children?: React.ReactElement
+	children?: React.ReactNode
 	isPrimary?: true | false
 	html?: String
+	as?: keyof HTMLElementTagNameMap
 }
 
 const Text = ({
@@ -41,6 +41,7 @@ const Text = ({
 	children,
 	isPrimary,
 	html,
+	as,
 }: TextProps) => {
 	const primaryFontsList = ["h1", "h2", "h3", "h4"]
 	const isInPrimaryFontList =
@@ -178,12 +179,5 @@ const validElements = [
 ]
 
 Text.defaultProps = {}
-Text.propTypes = {
-	value: PropTypes.string,
-	variant: PropTypes.oneOf([...validElements]),
-	weight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-	color: PropTypes.string,
-	className: PropTypes.string,
-}
 
 export { Text }
