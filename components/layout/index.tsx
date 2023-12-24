@@ -1,5 +1,4 @@
 import * as React from "react"
-import Seo from "./seo"
 import { MainFooter } from "./footer"
 import { NavBar } from "./navbar"
 import ctl from "@netlify/classnames-template-literals"
@@ -20,7 +19,11 @@ const Layout = ({
 }: LayoutProps) => {
 	return (
 		<>
-			<Meta />
+			<Meta
+				title={title}
+				description={description}
+				ignoreSiteName={ignoreSiteName}
+			/>
 			<NavBar />
 			<main className='relative'>{children}</main>
 			<ToastContainer
