@@ -23,37 +23,34 @@ export default function Post({ post, posts, preview }) {
 	}
 
 	return (
-		<Layout title={post.title}>
+		<Layout title={router.isFallback ? "Loading..." : post?.title}>
 			<Container>
 				<Header />
-				{router.isFallback ? (
-					<PostTitle>Loading…</PostTitle>
-				) : (
-					<>
-						<article>
-							<Head>
-								<meta
-									property='og:image'
-									content={post.featuredImage?.node.sourceUrl}
-								/>
-							</Head>
-							<PostHeader
-								title={post.title}
-								coverImage={post.featuredImage}
-								date={post.date}
-								author={post.author}
-								categories={post.categories}
-							/>
-							<PostBody content={post.content} />
-							<footer>
-								{post.tags.edges.length > 0 && <Tags tags={post.tags} />}
-							</footer>
-						</article>
 
-						<SectionSeparator />
-						{morePosts.length > 0 && <MoreStories posts={morePosts} />}
-					</>
-				)}
+				<>
+					<article>
+						<Head>
+							<meta
+								property='og:image'
+								content={post.featuredImage?.node.sourceUrl}
+							/>
+						</Head>
+						<PostHeader
+							title={post.title}
+							coverImage={post.featuredImage}
+							date={post.date}
+							author={post.author}
+							categories={post.categories}
+						/>
+						<PostBody content={post.content} />
+						<footer>
+							{post.tags.edges.length > 0 && <Tags tags={post.tags} />}
+						</footer>
+					</article>
+
+					<SectionSeparator />
+					{morePosts.length > 0 && <MoreStories posts={morePosts} />}
+				</>
 			</Container>
 		</Layout>
 	)
