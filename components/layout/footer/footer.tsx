@@ -1,8 +1,8 @@
 import React, { Key } from "react"
 import ctl from "@netlify/classnames-template-literals"
-import Container from "../../container"
-import { NLink } from "../../nlink"
-import { Text } from "../../text"
+import Container from "components/container"
+import { NLink } from "components/nlink"
+import { Text } from "components/text"
 import menulinks from "../../../config/menu.json"
 import Image from "next/image"
 
