@@ -3,7 +3,9 @@ import Container from "../components/container"
 import MoreStories from "../components/more-stories"
 import HeroPost from "../components/hero-post"
 import Layout from "../components/layout"
+import { Partners, Newsletter } from "components"
 import { getAllPostsForHome } from "../lib/api"
+import { HomeHeader } from "templates/home"
 
 export default function Index({ allPosts: { edges }, preview }) {
 	const heroPost = edges[0]?.node
@@ -14,6 +16,7 @@ export default function Index({ allPosts: { edges }, preview }) {
 			title='Other Faces of Tech'
 			ignoreSiteName={true}
 			description="Let's help you put a face your career in tech. Through stories, roadmaps, and resources">
+			<HomeHeader />
 			<Container>
 				{heroPost && (
 					<HeroPost
@@ -27,6 +30,10 @@ export default function Index({ allPosts: { edges }, preview }) {
 				)}
 				{morePosts.length > 0 && <MoreStories posts={morePosts} />}
 			</Container>
+			<Newsletter />
+			<div className='md:mt-[122px] mt-[59px] mb-[90px]'>
+				<Partners />
+			</div>
 		</Layout>
 	)
 }

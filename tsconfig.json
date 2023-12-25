@@ -17,11 +17,12 @@
 		"baseUrl": ".",
 		"paths": {
 			"components/*": ["components/*"],
-			"svgs": ["svgs/*"],
-			"config": ["config/*"],
-			"utils": ["utils/*"],
-			"mocks": ["mocks/*"],
-			"templates": ["templates/*"]
+			"context/*": ["context/*"],
+			"svgs/*": ["svgs/*"],
+			"config/*": ["config/*"],
+			"utils/*": ["utils/*"],
+			"mocks/*": ["mocks/*"],
+			"templates/*": ["templates/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
