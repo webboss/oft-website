@@ -1,9 +1,26 @@
 import React from "react"
 import { NLink, Text } from "components"
-
+import Image from "next/image"
 import RightArrowIcon from "../../../svgs/arrow-right.svg"
 
-const ArticlePreview = ({ title, slug, featuredImage, role }) => {
+export interface ArticlePreviewProps {
+	title: string
+	slug: string
+	featuredImage: {
+		node?: {
+			sourceUrl: string
+		}
+	}
+
+	role: string
+}
+
+const ArticlePreview = ({
+	title,
+	slug,
+	featuredImage,
+	role,
+}: ArticlePreviewProps) => {
 	return (
 		<div className='gradient-blue-to-red p-[1px] rounded'>
 			<div className='relative overflow-hidden  rounded '>
@@ -20,11 +37,13 @@ const ArticlePreview = ({ title, slug, featuredImage, role }) => {
 					</div>
 				</div>
 
-				{/* <ImageWithMock
-					image={featuredImage}
-					className=' rounded  h-[416px]'
-					alt={title}
-				/> */}
+				<Image
+					width={2000}
+					height={416}
+					alt={`Cover Image for ${title}`}
+					src={featuredImage?.node.sourceUrl}
+					className=' rounded  h-[416px] object-cover'
+				/>
 			</div>
 		</div>
 	)
