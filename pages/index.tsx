@@ -1,10 +1,11 @@
 import { GetStaticProps } from "next"
 import Layout from "../components/layout"
 import { Partners, Newsletter } from "components"
-import { getAllPostsForHome } from "../lib/api"
+import { getAllCategory, getAllPostsForHome } from "../lib/api"
 import { HomeFeaturedStories, HomeHeader } from "templates/home"
+import { Resources } from "components/resources"
 
-export default function Index({ allPosts: { edges }, preview }) {
+export default function Index({ allPosts: { edges }, allCategory, preview }) {
 	const storyNodes = edges.map(edge => edge.node)
 
 	return (
@@ -17,6 +18,9 @@ export default function Index({ allPosts: { edges }, preview }) {
 			<HomeFeaturedStories stories={storyNodes} />
 
 			<Newsletter />
+			<div className='pt-[90px]'>
+				<Resources allCategoryQuery={allCategory} />
+			</div>
 			<div className='md:mt-[122px] mt-[59px] mb-[90px]'>
 				<Partners />
 			</div>
@@ -26,9 +30,10 @@ export default function Index({ allPosts: { edges }, preview }) {
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 	const allPosts = await getAllPostsForHome(preview)
+	const allCategory = await getAllCategory()
 
 	return {
-		props: { allPosts, preview },
+		props: { allPosts, preview, allCategory },
 		revalidate: 10,
 	}
 }

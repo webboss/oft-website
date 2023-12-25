@@ -211,3 +211,24 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
 
 	return data
 }
+
+export async function getAllCategory() {
+	const data = await fetchAPI(`
+query AllCategory {
+  categories {
+    nodes{
+      slug
+      description
+      name
+    }
+  
+  }
+    resources(first:1000) {
+      nodes{
+        slug
+      }
+    }
+  }
+`)
+	return data
+}
