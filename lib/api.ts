@@ -232,3 +232,18 @@ query AllCategory {
 `)
 	return data
 }
+
+export async function getAllTeamMembers() {
+	const data = await fetchAPI(`
+  query AllTeamMembers {
+    teamMembers(first:30){
+      nodes {
+        role
+        title
+      }
+    }
+  }
+  `)
+
+	return data
+}
