@@ -171,15 +171,15 @@ export const getStaticProps: GetStaticProps = async ({
 	preview = false,
 	previewData,
 }) => {
-	const data = await getPostAndMorePosts(params?.slug, preview, previewData)
+	// const data = await getPostAndMorePosts(params?.slug, preview, previewData)
 
-	console.log({ data })
+	// console.log({ data })
 
 	return {
 		props: {
 			preview,
-			post: data.post ?? null,
-			posts: data.posts ?? null,
+			post:  null,
+			posts: null,
 		},
 		// revalidate: 10,
 	}
