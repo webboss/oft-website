@@ -181,7 +181,7 @@ export const getStaticProps: GetStaticProps = async ({
 			post: data.post ?? null,
 			posts: data.posts ?? null,
 		},
-		revalidate: 10,
+		// revalidate: 10,
 	}
 }
 
