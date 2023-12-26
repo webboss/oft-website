@@ -176,8 +176,8 @@ export const getStaticProps: GetStaticProps = async ({
 	return {
 		props: {
 			preview,
-			post: data.post,
-			posts: data.posts,
+			post: data.post ?? null,
+			posts: data.posts ?? null,
 		},
 		revalidate: 10,
 	}
