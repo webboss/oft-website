@@ -1,6 +1,5 @@
 import React from "react"
-import { Text } from "components"
-import Container from "components/container"
+import { Text, Container } from "components"
 import Link from "next/link"
 
 export const Roadmaps = () => {

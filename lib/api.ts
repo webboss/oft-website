@@ -71,6 +71,7 @@ export async function getAllPostsForHome(preview) {
             slug
             date
             role
+            date
             featuredImage {
               node {
                 sourceUrl
@@ -126,6 +127,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       excerpt
       slug
       date
+      role
       featuredImage {
         node {
           sourceUrl
@@ -230,5 +232,20 @@ query AllCategory {
     }
   }
 `)
+	return data
+}
+
+export async function getAllTeamMembers() {
+	const data = await fetchAPI(`
+  query AllTeamMembers {
+    teamMembers(first:30){
+      nodes {
+        role
+        title
+      }
+    }
+  }
+  `)
+
 	return data
 }

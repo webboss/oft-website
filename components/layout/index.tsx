@@ -57,4 +57,4 @@ const gradientItemStyle = ctl(`
 w-[500px] h-[500px] rounded-full opacity-20 fixed z-[-1] pointer-events-none
 `)
 
-export default Layout
+export { Layout }

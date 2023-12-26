@@ -1,9 +1,7 @@
 import React from "react"
-import Container from "components/container"
-import { Text } from "../text"
-import { Input } from "components/input"
+
 import { Hr } from "components/hr"
-import { Button } from "components/button"
+import { Button, Container, Input, Text } from "components"
 import NewsletterPattern from "../../svgs/newsletter-pattern.svg"
 import ArrowIcon from "../../svgs/arrow-right.svg"
 import ctl from "@netlify/classnames-template-literals"

@@ -1,25 +1,25 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ctl from "@netlify/classnames-template-literals";
+import React from "react"
+import PropTypes from "prop-types"
+import ctl from "@netlify/classnames-template-literals"
 
 interface ContainerProps {
-  className?: String;
-  children: React.ReactElement;
+	className?: String
+	children: React.ReactNode
 }
 const Container = ({ className, children }: ContainerProps) => {
-  return (
-    <section className={containerStyle + " " + className}>{children}</section>
-  );
-};
+	return (
+		<section className={containerStyle + " " + className}>{children}</section>
+	)
+}
 
 const containerStyle = ctl(`
   max-w-[1380px]
   mx-auto 
   md:px-[24px]
-  px-4`);
+  px-4`)
 
 Container.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+	children: PropTypes.node.isRequired,
+}
 
-export default Container;
+export { Container }

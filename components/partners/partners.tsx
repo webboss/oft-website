@@ -1,6 +1,6 @@
-import { NLink } from "components/nlink"
+import { NLink, Container } from "components"
 import { partners } from "config/partners"
-import Container from "components/container"
+
 import React from "react"
 
 const Partners = () => {

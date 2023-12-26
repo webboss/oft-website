@@ -1,6 +1,6 @@
 import React, { Key } from "react"
 import ctl from "@netlify/classnames-template-literals"
-import Container from "components/container"
+import { Container } from "components"
 import { NLink } from "components/nlink"
 import { Text } from "components/text"
 import menulinks from "../../../config/menu.json"
@@ -14,10 +14,11 @@ const MainFooter = () => {
 			<Container>
 				<NLink to='/'>
 					<Image
-						alt='Otherfaces of Tech'
+						alt='Other Faces of Tech'
 						src='/assets/images/otherfaces.tech.png'
 						width={160}
 						height={120}
+						className='mx-auto'
 					/>
 				</NLink>
 
