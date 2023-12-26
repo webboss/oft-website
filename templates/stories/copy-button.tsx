@@ -4,7 +4,8 @@ import CopyIcon from "../../svgs/copy.svg"
 const CopyButton = () => {
 	const [isCopied, setIsCopied] = useState(false)
 	const copyLink = async () => {
-		await navigator.clipboard.writeText(document.location)
+		const currentLocation = `${window.location}`
+		await navigator.clipboard.writeText(currentLocation)
 		setIsCopied(true)
 		setTimeout(() => {
 			setIsCopied(false)
