@@ -89,73 +89,72 @@ const Author = ({ author }) => {
 }
 export default function Post({ post, posts, preview }) {
 	const router = useRouter()
-	const morePosts = posts?.edges.map(edge => edge.node)
-
-	const readTime = readingTime(post.content)
-	const purifiedContent = sanitize(post.content?.replace(/\n/gi, ""))
-
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />
 	}
+	if (router.isFallback) {
+		return (
+			<Layout title='Story'>
+				<PostTitle>Loading…</PostTitle>
+			</Layout>
+		)
+	}
+	const morePosts = posts?.edges.map(edge => edge.node)
+
+	const readTime = readingTime(post?.content)
+	const purifiedContent = sanitize(post?.content?.replace(/\n/gi, ""))
 
 	const featuredImage = post?.featuredImage
 	return (
 		<Layout title={router.isFallback ? "Loading..." : post?.title}>
 			<Container className='md:py-[100px] py-[50px] '>
-				{router.isFallback ? (
-					<PostTitle>Loading…</PostTitle>
-				) : (
-					<>
-						<article>
-							<Head>
-								<meta
-									property='og:image'
-									content={post.featuredImage?.node.sourceUrl}
-								/>
-							</Head>
+				<article>
+					<Head>
+						<meta
+							property='og:image'
+							content={post.featuredImage?.node.sourceUrl}
+						/>
+					</Head>
 
-							<header className='article-header'>
-								<MetaData date={post?.date} readTime={readTime.minutes} />
-								<Author author={post?.author} />
-								<Text variant='h3'>
-									{/* The weird symbole here is em-dash */}
-									{post?.title} &#8212; {post?.role}
-								</Text>
+					<header className='article-header'>
+						<MetaData date={post?.date} readTime={readTime.minutes} />
+						<Author author={post?.author} />
+						<Text variant='h3'>
+							{/* The weird symbole here is em-dash */}
+							{post?.title} &#8212; {post?.role}
+						</Text>
 
-								<Image
-									width={2000}
-									height={1000}
-									alt={`${post?.title}`}
-									src={featuredImage?.node.sourceUrl}
-									className='w-full object-top  md:rounded-[100px] rounded-[50px] md:h-auto h-[370px] my-[45px] '
-								/>
-							</header>
-							<section className='flex md:flex-row flex-col-reverse justify-between relative'>
-								<aside>
-									<div className='md:sticky md:mt-0 mt-8 top-4'>
-										<Text variant='p16' value='SHARE' />
-
-										<Share title={post?.title} />
-										<CopyButton />
-									</div>
-								</aside>
-								<div className='article max-w-[738px] flex-grow-0'>
-									{parse(purifiedContent, {
-										replace: (domNode: DOMNode) => {
-											if (
-												domNode instanceof Element &&
-												domNode.name === "blockquote"
-											) {
-												return <Blockquote node={domNode.children} />
-											}
-										},
-									})}
-								</div>
-								<div />
-							</section>
-						</article>
-					</>
-				)}
+						<Image
+							width={2000}
+							height={1000}
+							alt={`${post?.title}`}
+							src={featuredImage?.node.sourceUrl}
+							className='w-full object-top  md:rounded-[100px] rounded-[50px] md:h-auto h-[370px] my-[45px] '
+						/>
+					</header>
+					<section className='flex md:flex-row flex-col-reverse justify-between relative'>
+						<aside>
+							<div className='md:sticky md:mt-0 mt-8 top-4'>
+								<Text variant='p16' value='SHARE' />
+								<Share title={post?.title} />
+								<CopyButton />
+							</div>
+						</aside>
+						<div className='article max-w-[738px] flex-grow-0'>
+							{parse(purifiedContent, {
+								replace: (domNode: DOMNode) => {
+									if (
+										domNode instanceof Element &&
+										domNode.name === "blockquote"
+									) {
+										return <Blockquote node={domNode.children} />
+									}
+								},
+							})}
+						</div>
+						<div />
+					</section>
+				</article>
 			</Container>
 			<Hr />
 			<Container className='mb-[116px]'>
