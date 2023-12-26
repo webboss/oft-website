@@ -1,12 +1,10 @@
-import React from "react"
+import React, { Key } from "react"
 import ctl from "@netlify/classnames-template-literals"
 
-import { NLink } from "../../nlink"
 import CloseIcon from "../../../svgs/close.svg"
-import Container from "../../container"
-import { Text } from "../../text"
 import menulist from "../../../config/menu.json"
 import Image from "next/image"
+import { Container, NLink, Text } from "components"
 
 const Menu = ({ onToggle }) => {
 	return (
@@ -31,7 +29,8 @@ const Menu = ({ onToggle }) => {
 				<nav>
 					<ul className={listWrapper}>
 						{menulist.map(menuItem => {
-							const { title, url, href } = menuItem
+							const { title, to, href } = menuItem
+							const componentKey = to || (href?.url as Key)
 							return (
 								<Text
 									variant='h3'
@@ -40,7 +39,7 @@ const Menu = ({ onToggle }) => {
 									className='md:mb-[36px] mb-[32px]'>
 									<NLink
 										{...menuItem}
-										key={url || href}
+										key={componentKey}
 										activeClassName={activePageLink}>
 										{title}
 									</NLink>

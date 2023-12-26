@@ -1,6 +1,5 @@
 import { GetStaticProps } from "next"
-import Layout from "../components/layout"
-import { Partners, Newsletter } from "components"
+import { Layout, Partners, Newsletter } from "components"
 import { getAllCategory, getAllPostsForHome } from "../lib/api"
 import { HomeFeaturedStories, HomeHeader } from "templates/home"
 import { Resources } from "components/resources"

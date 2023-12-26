@@ -1,8 +1,7 @@
 import React from "react"
 
-import { Button, Text } from "components"
+import { Button, Text, Container } from "components"
 import { Hr } from "components/hr"
-import Container from "components/container"
 
 import { ArticlePreviewList, ArticlePreviewProps } from "components/article"
 import Image from "next/image"
