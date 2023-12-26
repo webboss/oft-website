@@ -89,15 +89,15 @@ const Author = ({ author }) => {
 }
 export default function Post({ post, posts, preview }) {
 	const router = useRouter()
-	if (!router.isFallback && !post?.slug) {
-		return <ErrorPage statusCode={404} />
-	}
 	if (router.isFallback) {
 		return (
 			<Layout title='Story'>
 				<PostTitle>Loading…</PostTitle>
 			</Layout>
 		)
+	}
+	if (!router.isFallback && !post?.slug) {
+		return <ErrorPage statusCode={404} />
 	}
 	const morePosts = posts?.edges.map(edge => edge.node)
 
@@ -141,7 +141,8 @@ export default function Post({ post, posts, preview }) {
 							</div>
 						</aside>
 						<div className='article max-w-[738px] flex-grow-0'>
-							{parse(purifiedContent, {
+							<div dangerouslySetInnerHTML={{ __html: post?.content }} />
+							{/* {parse(purifiedContent, {
 								replace: (domNode: DOMNode) => {
 									if (
 										domNode instanceof Element &&
@@ -150,7 +151,7 @@ export default function Post({ post, posts, preview }) {
 										return <Blockquote node={domNode.children} />
 									}
 								},
-							})}
+							})} */}
 						</div>
 						<div />
 					</section>
