@@ -2,14 +2,10 @@ import { useRouter } from "next/router"
 import ErrorPage from "next/error"
 import Head from "next/head"
 import { GetStaticPaths, GetStaticProps } from "next"
-import PostBody from "../../components/post-body"
-import MoreStories from "../../components/more-stories"
-import SectionSeparator from "../../components/section-separator"
 import { Container, Layout, Text } from "components"
 import PostTitle from "../../components/post-title"
-import Tags from "../../components/tags"
 import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api"
-import parse from "html-react-parser"
+import parse, { Element } from "html-react-parser"
 import { sanitize } from "isomorphic-dompurify"
 import { readingTime } from "reading-time-estimator"
 import Image from "next/image"
@@ -17,6 +13,7 @@ import Share from "templates/stories/share"
 import CopyButton from "templates/stories/copy-button"
 import { Hr } from "components/hr"
 import { ArticlePreviewList } from "components/article"
+import type { DOMNode, HTMLReactParserOptions } from "html-react-parser"
 
 const Blockquote = ({ node }) => {
 	// const urlLength = `${url}`.length;
@@ -144,9 +141,12 @@ export default function Post({ post, posts, preview }) {
 								</aside>
 								<div className='article max-w-[738px] flex-grow-0'>
 									{parse(purifiedContent, {
-										replace: domNode => {
-											if (domNode?.name === "blockquote") {
-												return <Blockquote node={domNode?.children} />
+										replace: (domNode: DOMNode) => {
+											if (
+												domNode instanceof Element &&
+												domNode.name === "blockquote"
+											) {
+												return <Blockquote node={domNode.children} />
 											}
 										},
 									})}
