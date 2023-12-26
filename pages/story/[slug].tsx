@@ -173,6 +173,8 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
 	const data = await getPostAndMorePosts(params?.slug, preview, previewData)
 
+	console.log({ data })
+
 	return {
 		props: {
 			preview,
