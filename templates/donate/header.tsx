@@ -1,18 +1,19 @@
 import React from "react"
 import ctl from "@netlify/classnames-template-literals"
-import { StaticImage } from "gatsby-plugin-image"
 
 import { Container, Text } from "components"
+import Image from "next/image"
 
 export const DonateHeader = () => {
 	return (
 		<header>
 			<Container>
 				<div className={headerImageWrapper}>
-					<StaticImage
+					<Image
 						alt='Headshot of members of Other Faces of Tec'
-						src='../../assets/images/donate-cover-image.png'
-						placeholder='blur'
+						src='/assets/images/donate-cover-image.png'
+						width={1500}
+						height={500}
 						className='rounded-full'
 					/>
 				</div>

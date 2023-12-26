@@ -1,6 +1,7 @@
 import { AppProps } from "next/app"
 import "../styles/index.css"
 import localFont from "next/font/local"
+import "react-toastify/dist/ReactToastify.css"
 
 const clashDisplay = localFont({
 	src: [

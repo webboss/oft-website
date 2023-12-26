@@ -10,8 +10,10 @@ export const RoadmapsHeader = () => {
 			<Container>
 				<div className={headerImageWrapper}>
 					<Image
-						alt='Headshot of members of Other Faces of Tec'
-						src='../../assets/images/donate-cover-image.png'
+						alt='Headshot of members of Other Faces of Tech'
+						src='/assets/images/donate-cover-image.png'
+						width={1500}
+						height={500}
 						className='rounded-full'
 					/>
 				</div>
