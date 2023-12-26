@@ -11,8 +11,8 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				primary: ["ClashDisplay", "sans-serif"],
-				secondary: ["GeneralSans", "sans-serif"],
+				primary: ["var(--font-primary)", "sans-serif"],
+				secondary: ["var(--font-secondary)", "sans-serif"],
 			},
 
 			colors: {
