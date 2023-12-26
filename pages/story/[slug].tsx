@@ -99,15 +99,16 @@ export default function Post({ post, posts, preview }) {
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />
 	}
-	const morePosts = posts?.edges.map(edge => edge.node)
+	// const morePosts = posts?.edges.map(edge => edge.node)
 
-	const readTime = readingTime(post?.content)
-	const purifiedContent = sanitize(post?.content?.replace(/\n/gi, ""))
+	// const readTime = readingTime(post?.content)
+	// const purifiedContent = sanitize(post?.content?.replace(/\n/gi, ""))
 
-	const featuredImage = post?.featuredImage
+	// const featuredImage = post?.featuredImage
 	return (
 		<Layout title={router.isFallback ? "Loading..." : post?.title}>
-			<Container className='md:py-[100px] py-[50px] '>
+			<p>Story</p>
+			{/* <Container className='md:py-[100px] py-[50px] '>
 				<article>
 					<Head>
 						<meta
@@ -120,7 +121,7 @@ export default function Post({ post, posts, preview }) {
 						<MetaData date={post?.date} readTime={readTime.minutes} />
 						<Author author={post?.author} />
 						<Text variant='h3'>
-							{/* The weird symbole here is em-dash */}
+							The weird symbole here is em-dash 
 							{post?.title} &#8212; {post?.role}
 						</Text>
 
@@ -151,7 +152,7 @@ export default function Post({ post, posts, preview }) {
 										return <Blockquote node={domNode.children} />
 									}
 								},
-							})} */}
+							})} 
 						</div>
 						<div />
 					</section>
@@ -160,7 +161,7 @@ export default function Post({ post, posts, preview }) {
 			<Hr />
 			<Container className='mb-[116px]'>
 				<ArticlePreviewList heading='More Stories' articles={morePosts} />
-			</Container>
+			</Container> */}
 		</Layout>
 	)
 }
