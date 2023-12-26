@@ -2,29 +2,109 @@ import { useRouter } from "next/router"
 import ErrorPage from "next/error"
 import Head from "next/head"
 import { GetStaticPaths, GetStaticProps } from "next"
-import Container from "../../components/container"
 import PostBody from "../../components/post-body"
 import MoreStories from "../../components/more-stories"
-import Header from "../../components/header"
-import PostHeader from "../../components/post-header"
 import SectionSeparator from "../../components/section-separator"
-import Layout from "../../components/layout"
+import { Container, Layout, Text } from "components"
 import PostTitle from "../../components/post-title"
 import Tags from "../../components/tags"
 import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api"
+import parse from "html-react-parser"
+import { sanitize } from "isomorphic-dompurify"
+import { readingTime } from "reading-time-estimator"
+import Image from "next/image"
+import Share from "templates/stories/share"
+import CopyButton from "templates/stories/copy-button"
+import { Hr } from "components/hr"
+import { ArticlePreviewList } from "components/article"
 
+const Blockquote = ({ node }) => {
+	// const urlLength = `${url}`.length;
+	const urlLength = 8
+	const tweetLength = 280
+	const expectedStringLength = tweetLength - urlLength
+
+	const firstParagraph = `${node[0].children[0].data}`.substring(
+		0,
+		expectedStringLength
+	)
+	return (
+		<div
+			className='bg-primary-200
+	  bg-opacity-5 p-6 rounded-3xl my-4'>
+			<blockquote>
+				{node.map(nodeItem => {
+					const Element = nodeItem.name
+					return <Element>{nodeItem.children[0].data}</Element>
+				})}
+			</blockquote>
+			<div>
+				{/* <Button
+			onClick={() =>
+			  popupWindow(
+				`https://twitter.com/share?text=${firstParagraph}&url=${url}`
+			  )
+			}
+		  >
+			Tweet this
+		  </Button> */}
+			</div>
+		</div>
+	)
+}
+
+const MetaData = ({ date, readTime = 4 }) => {
+	return (
+		<div className='flex md:justify-start justify-between gap-10 mb-[22px]'>
+			<Text value={date} variant='p18' className=' uppercase ' />
+			<Text
+				value={`${readTime} Mins Read`}
+				variant='p18'
+				className=' uppercase '
+			/>
+		</div>
+	)
+}
+
+const Author = ({ author }) => {
+	const authorInfo = author.node
+
+	const { firstName, lastName, name } = authorInfo
+
+	const hasFullname = firstName && lastName
+	const fullName = firstName + " " + lastName
+
+	const nameToShow = hasFullname ? fullName : name
+
+	return (
+		<div className='mb-[22px] flex items-center'>
+			<Image
+				src='/assets/images/avatar.png'
+				alt=''
+				width={42}
+				height={42}
+				className='md:mr-[19px] mr-[10px] md:w-[42px] w-[28px] md:h-[42px] h-[28px]'
+			/>
+
+			<Text value={nameToShow} variant='p18' className=' uppercase !mb-0' />
+		</div>
+	)
+}
 export default function Post({ post, posts, preview }) {
 	const router = useRouter()
-	const morePosts = posts?.edges
+	const morePosts = posts?.edges.map(edge => edge.node)
+
+	const readTime = readingTime(post.content)
+	const purifiedContent = sanitize(post.content?.replace(/\n/gi, ""))
 
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />
 	}
 
+	const featuredImage = post?.featuredImage
 	return (
 		<Layout title={router.isFallback ? "Loading..." : post?.title}>
-			<Container>
-				<Header />
+			<Container className='md:py-[100px] py-[50px] '>
 				{router.isFallback ? (
 					<PostTitle>Loading…</PostTitle>
 				) : (
@@ -36,23 +116,50 @@ export default function Post({ post, posts, preview }) {
 									content={post.featuredImage?.node.sourceUrl}
 								/>
 							</Head>
-							<PostHeader
-								title={post.title}
-								coverImage={post.featuredImage}
-								date={post.date}
-								author={post.author}
-								categories={post.categories}
-							/>
-							<PostBody content={post.content} />
-							<footer>
-								{post.tags.edges.length > 0 && <Tags tags={post.tags} />}
-							</footer>
-						</article>
 
-						<SectionSeparator />
-						{morePosts.length > 0 && <MoreStories posts={morePosts} />}
+							<header className='article-header'>
+								<MetaData date={post?.date} readTime={readTime.minutes} />
+								<Author author={post?.author} />
+								<Text variant='h3'>
+									{/* The weird symbole here is em-dash */}
+									{post?.title} &#8212; {post?.role}
+								</Text>
+
+								<Image
+									width={2000}
+									height={1000}
+									alt={`${post?.title}`}
+									src={featuredImage?.node.sourceUrl}
+									className='w-full object-top  md:rounded-[100px] rounded-[50px] md:h-auto h-[370px] my-[45px] '
+								/>
+							</header>
+							<section className='flex md:flex-row flex-col-reverse justify-between relative'>
+								<aside>
+									<div className='md:sticky md:mt-0 mt-8 top-4'>
+										<Text variant='p16' value='SHARE' />
+
+										<Share title={post?.title} />
+										<CopyButton />
+									</div>
+								</aside>
+								<div className='article max-w-[738px] flex-grow-0'>
+									{parse(purifiedContent, {
+										replace: domNode => {
+											if (domNode?.name === "blockquote") {
+												return <Blockquote node={domNode?.children} />
+											}
+										},
+									})}
+								</div>
+								<div />
+							</section>
+						</article>
 					</>
 				)}
+			</Container>
+			<Hr />
+			<Container className='mb-[116px]'>
+				<ArticlePreviewList heading='More Stories' articles={morePosts} />
 			</Container>
 		</Layout>
 	)

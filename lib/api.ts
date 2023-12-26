@@ -71,6 +71,7 @@ export async function getAllPostsForHome(preview) {
             slug
             date
             role
+            date
             featuredImage {
               node {
                 sourceUrl
@@ -126,6 +127,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       excerpt
       slug
       date
+      role
       featuredImage {
         node {
           sourceUrl
