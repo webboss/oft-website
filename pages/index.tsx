@@ -18,7 +18,7 @@ export default function Index({ allPosts: { edges }, allCategory, preview }) {
 
 			<Newsletter />
 			<div className='pt-[90px]'>
-				<Resources allCategoryQuery={allCategory} />
+				{/* <Resources allCategoryQuery={allCategory} /> */}
 			</div>
 			<div className='md:mt-[122px] mt-[59px] mb-[90px]'>
 				<Partners />
@@ -29,10 +29,10 @@ export default function Index({ allPosts: { edges }, allCategory, preview }) {
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 	const allPosts = await getAllPostsForHome(preview)
-	const allCategory = await getAllCategory()
+	// const allCategory = await getAllCategory()
 
 	return {
-		props: { allPosts, preview, allCategory },
+		props: { allPosts, preview },
 		revalidate: 10,
 	}
 }
