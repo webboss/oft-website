@@ -14,7 +14,7 @@ export default function Index({ allPosts: { edges }, allCategory, preview }) {
 			description="Let's help you put a face your career in tech. Through stories, roadmaps, and resources">
 			<HomeHeader />
 
-			<HomeFeaturedStories stories={storyNodes} />
+			{storyNodes.length > 0 && <HomeFeaturedStories stories={storyNodes} />}
 
 			<Newsletter />
 			<div className='pt-[90px]'>
