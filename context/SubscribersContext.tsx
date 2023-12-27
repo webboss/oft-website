@@ -18,6 +18,9 @@ const SubscribersContextProvider = ({ children }) => {
 					setNoOfSubscribers(total_items)
 				}
 			})
+			.catch(e => {
+				console.error("[no-of-subscribers]", e.message)
+			})
 	}, [])
 
 	return (
