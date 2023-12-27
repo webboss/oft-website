@@ -2,6 +2,7 @@ import { AppProps } from "next/app"
 import "../styles/index.css"
 import localFont from "next/font/local"
 import "react-toastify/dist/ReactToastify.css"
+import SubscribersContextProvider from "context/SubscribersContext"
 
 const clashDisplay = localFont({
 	src: [
@@ -36,7 +37,9 @@ const generalSans = localFont({
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<main className={`${generalSans.variable} ${clashDisplay.variable} `}>
-			<Component {...pageProps} />
+			<SubscribersContextProvider>
+				<Component {...pageProps} />
+			</SubscribersContextProvider>
 		</main>
 	)
 }
