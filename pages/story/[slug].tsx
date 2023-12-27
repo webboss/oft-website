@@ -169,6 +169,7 @@ export const getStaticProps: GetStaticProps = async ({
 	preview = false,
 	previewData,
 }) => {
+	if (!params?.slug) return null
 	const data = await getPostAndMorePosts(params?.slug, preview, previewData)
 
 	return {
