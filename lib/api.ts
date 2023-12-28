@@ -14,7 +14,7 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
 	/**
 	 * Artiticially delay API execution
 	 */
-	await sleep(5000)
+	await sleep(10000)
 	// WPGraphQL Plugin must be enabled
 	const res = await fetch(API_URL, {
 		headers,
