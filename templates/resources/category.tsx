@@ -55,7 +55,7 @@ const ResourceItem = ({ resource }) => {
 						width={500}
 						height={500}
 						alt={title}
-						className='!absolute left-0 right-0 top-0  h-full z-0 '
+						className='!absolute left-0 right-0 top-0  h-full z-0 object-cover'
 					/>
 
 					<div className='md:px-[24px] px-2 relative z-10'>

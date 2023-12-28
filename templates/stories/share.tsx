@@ -29,7 +29,7 @@ export default Share
 // Check if window is defined (so if in the browser or in node.js).
 const isBrowser = typeof window !== "undefined"
 
-export const url = isBrowser ? document.location : ""
+export const url = isBrowser ? `${document.location}` : ""
 export const popupWindow = link => {
 	if (isBrowser) {
 		window.open(link, "popup", "width=600,height=600")

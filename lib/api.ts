@@ -12,9 +12,16 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
 	}
 
 	/**
-	 * Artiticially delay API execution
+	 * Artificially delay GraphQL API executions
+	 * For some weird reasons, API requests fail when making a lot of requests
+	 * during static site generation. This is the workaround I was able to get things
+	 * working. More elegant solutions are of course always welcome.
+	 *
+	 * PS: If SSG every fails, increase the DELAY_IN_MS value
 	 */
-	await sleep(10000)
+
+	const DELAY_IN_MS = 10_000
+	await sleep(DELAY_IN_MS)
 	// WPGraphQL Plugin must be enabled
 	const res = await fetch(API_URL, {
 		headers,
