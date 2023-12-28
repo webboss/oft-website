@@ -249,3 +249,38 @@ export async function getAllTeamMembers() {
 
 	return data
 }
+
+export async function getallResources() {
+	const data = await fetchAPI(`
+  query AllResources{
+    categories {
+      nodes {
+        name
+        resources {
+          nodes {
+            title
+            url
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            resourceTypes {
+              nodes {
+                name
+              }
+            }
+            resourcePayments {
+              nodes {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  `)
+
+	return data
+}
