@@ -1,3 +1,5 @@
+import { sleep } from "utils/sleep"
+
 const API_URL = process.env.WORDPRESS_API_URL
 
 async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
@@ -9,6 +11,10 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
 		] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
 	}
 
+	/**
+	 * Artiticially delay API execution
+	 */
+	await sleep(10000)
 	// WPGraphQL Plugin must be enabled
 	const res = await fetch(API_URL, {
 		headers,
@@ -242,6 +248,41 @@ export async function getAllTeamMembers() {
       nodes {
         role
         title
+      }
+    }
+  }
+  `)
+
+	return data
+}
+
+export async function getallResources() {
+	const data = await fetchAPI(`
+  query AllResources{
+    categories(first: 30) {
+      nodes {
+        name
+        resources {
+          nodes {
+            title
+            url
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            resourceTypes {
+              nodes {
+                name
+              }
+            }
+            resourcePayments {
+              nodes {
+                name
+              }
+            }
+          }
+        }
       }
     }
   }
