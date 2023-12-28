@@ -1,3 +1,5 @@
+import { sleep } from "utils/sleep"
+
 const API_URL = process.env.WORDPRESS_API_URL
 
 async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
@@ -9,6 +11,10 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
 		] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
 	}
 
+	/**
+	 * Artiticially delay API execution
+	 */
+	await sleep(5000)
 	// WPGraphQL Plugin must be enabled
 	const res = await fetch(API_URL, {
 		headers,
