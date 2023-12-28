@@ -2,25 +2,25 @@ import { useRouter } from "next/router"
 import ErrorPage from "next/error"
 import Head from "next/head"
 import { GetStaticPaths, GetStaticProps } from "next"
-import { Container, Layout, Text } from "components"
+import { Button, Container, Layout, Text } from "components"
 import PostTitle from "../../components/post-title"
 import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api"
 import parse, { Element } from "html-react-parser"
 import { sanitize } from "isomorphic-dompurify"
 import { readingTime } from "reading-time-estimator"
 import Image from "next/image"
-import Share from "templates/stories/share"
+import Share, { popupWindow, url } from "templates/stories/share"
 import CopyButton from "templates/stories/copy-button"
 import { Hr } from "components/hr"
 import { ArticlePreviewList } from "components/article"
 import type { DOMNode, HTMLReactParserOptions } from "html-react-parser"
 
 const Blockquote = ({ node }) => {
-	// const urlLength = `${url}`.length;
-	const urlLength = 8
-	const tweetLength = 280
-	const expectedStringLength = tweetLength - urlLength
+	const urlLength = url.length
 
+	const tweetLength = 280
+	const ellipsis = "..."
+	const expectedStringLength = tweetLength - urlLength - ellipsis.length - 2
 	const firstParagraph = `${node[0].children[0].data}`.substring(
 		0,
 		expectedStringLength
@@ -36,15 +36,14 @@ const Blockquote = ({ node }) => {
 				})}
 			</blockquote>
 			<div>
-				{/* <Button
-			onClick={() =>
-			  popupWindow(
-				`https://twitter.com/share?text=${firstParagraph}&url=${url}`
-			  )
-			}
-		  >
-			Tweet this
-		  </Button> */}
+				<Button
+					onClick={() =>
+						popupWindow(
+							`https://twitter.com/share?text=${firstParagraph}${ellipsis}&url=${url.trim()}`
+						)
+					}
+					text='Tweet this'
+				/>
 			</div>
 		</div>
 	)
