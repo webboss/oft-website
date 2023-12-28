@@ -51,7 +51,7 @@ const ResourceItem = ({ resource }) => {
            pb-[20px]  pt-[100%] z-[2]'
 					/>
 					<Image
-						src={featuredImage.node.sourceUrl}
+						src={featuredImage?.node?.sourceUrl}
 						width={500}
 						height={500}
 						alt={title}

@@ -253,7 +253,7 @@ export async function getAllTeamMembers() {
 export async function getallResources() {
 	const data = await fetchAPI(`
   query AllResources{
-    categories {
+    categories(first: 30) {
       nodes {
         name
         resources {

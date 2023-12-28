@@ -1,6 +1,5 @@
 import React from "react"
 import { useForm } from "react-hook-form"
-
 import { Container, Input, Newsletter, Text, Layout } from "components"
 import ctl from "@netlify/classnames-template-literals"
 
@@ -12,11 +11,11 @@ import { getallResources } from "lib/api"
 import { GetStaticProps } from "next"
 
 const ResourcePage = ({ resourceCategoryQuery }) => {
-	console.log({ resourceCategoryQuery })
 	const { register, watch } = useForm({
 		mode: "onChange",
 		defaultValues: { search: "" },
 	})
+
 	const allResourcesCategory = resourceCategoryQuery.nodes.filter(
 		category =>
 			!!category.resources?.nodes || !!category.resources?.nodes?.length
@@ -24,8 +23,13 @@ const ResourcePage = ({ resourceCategoryQuery }) => {
 
 	const searchQuery = watch("search")
 
+	const totalItems = allResourcesCategory.reduce(
+		(acc, item) => acc + item.resources.nodes.length,
+		0
+	)
 	const searchResources = items => {
 		const lowercaseSearchQuery = searchQuery?.toLowerCase()?.trim()
+
 		const categoryFilter = items.filter(category =>
 			category.name.toLowerCase().includes(lowercaseSearchQuery)
 		)
@@ -40,7 +44,7 @@ const ResourcePage = ({ resourceCategoryQuery }) => {
 		<Layout
 			title='Resources'
 			description='Carefully selected books, schools, courses to kickstart and supercharge your non-coding career in tech '>
-			<ResourcesHeader totalCount={72} />
+			<ResourcesHeader totalCount={totalItems} />
 			<div className={searchWrapperStyle}>
 				<SearchIcon className='md:w-auto w-[24px]' />
 				<Input
