@@ -32,7 +32,7 @@ const ArticlePreview = ({
 							to={`/story/${slug}`}
 							className='flex items-center mt-2 group'>
 							Read story{" "}
-							<RightArrowIcon className=' transition transform ml-2 group-hover:translate-x-2' />{" "}
+							<RightArrowIcon className=' transition transform ml-2 w-6 group-hover:translate-x-2' />{" "}
 						</NLink>
 					</div>
 				</div>

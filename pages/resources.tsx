@@ -4,7 +4,6 @@ import { Container, Input, Newsletter, Text, Layout } from "components"
 import ctl from "@netlify/classnames-template-literals"
 
 import { ResourceCategory, ResourcesHeader } from "templates/resources"
-
 import SearchIcon from "svgs/search.svg"
 import SearchInfoIcon from "svgs/search-info.svg"
 import { getallResources } from "lib/api"
@@ -46,7 +45,7 @@ const ResourcePage = ({ resourceCategoryQuery }) => {
 			description='Carefully selected books, schools, courses to kickstart and supercharge your non-coding career in tech '>
 			<ResourcesHeader totalCount={totalItems} />
 			<div className={searchWrapperStyle}>
-				<SearchIcon className='md:w-auto w-[24px]' />
+				<SearchIcon className='md:w-7 w-[24px]' />
 				<Input
 					placeholder='Search Resources e.g Product Design'
 					className={searchInputStyle}

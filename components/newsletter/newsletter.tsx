@@ -95,7 +95,7 @@ export const Newsletter = () => {
 									isLoading={isSubmitting}
 									text=''
 									disabled={!isValid}>
-									<ArrowIcon />
+									<ArrowIcon className='w-6' />
 								</Button>
 							</form>
 						</div>
