@@ -78,7 +78,7 @@ const ResourceItem = ({ resource }) => {
 							href={{ url }}
 							className='flex md:text-inherit md:text-[16px] font-secondary text-[8px] items-center group'>
 							View Resource
-							<RightArrowIcon className=' transition md:w-auto w-3 transform ml-2 group-hover:translate-x-2' />{" "}
+							<RightArrowIcon className=' transition md:w-[22px] w-3 transform ml-2 group-hover:translate-x-2' />{" "}
 						</NLink>
 					</div>
 				</div>
