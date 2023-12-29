@@ -192,7 +192,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
 						: ""
 				}
       }
-      posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+      posts(first: 10, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
             ...PostFields
@@ -220,9 +220,31 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
 	}
 
 	// Filter out the main post
-	data.posts.edges = data.posts.edges.filter(({ node }) => node.slug !== slug)
-	// If there are still 3 posts, remove the last one
-	if (data.posts.edges.length > 2) data.posts.edges.pop()
+	const totalPosts = data.posts.edges
+
+	const NO_OF_ITEMS = 3
+	const indexOfPost = totalPosts.findIndex(({ node }) => node.slug === slug)
+	const postsWithoutCurrentPost = totalPosts.filter(
+		({ node }) => node.slug !== slug
+	)
+
+	const relatedPosts = postsWithoutCurrentPost.filter((_, index) => {
+		/**
+		 * The algorithm for this should be improved using something like categories but because we don't have the numbers yet
+		 * This approach would work just fine.
+		 */
+		if (postsWithoutCurrentPost.length < NO_OF_ITEMS) {
+			return true
+		} else if (indexOfPost == 0) {
+			return index < NO_OF_ITEMS
+		} else if (indexOfPost > postsWithoutCurrentPost.length - NO_OF_ITEMS) {
+			return index >= postsWithoutCurrentPost.length - NO_OF_ITEMS
+		} else {
+			return index >= indexOfPost - 1 && index < indexOfPost + NO_OF_ITEMS - 1
+		}
+	})
+
+	data.posts.edges = relatedPosts
 
 	return data
 }
@@ -230,7 +252,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
 export async function getAllCategory() {
 	const data = await fetchAPI(`
 query AllCategory {
-  categories {
+  categories(first: 50) {
     nodes{
       slug
       description
