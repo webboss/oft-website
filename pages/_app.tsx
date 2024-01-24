@@ -1,4 +1,5 @@
 import { AppProps } from "next/app";
+import Head from "next/head";
 import "../styles/index.css";
 import localFont from "next/font/local";
 import "react-toastify/dist/ReactToastify.css";
@@ -38,6 +39,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <main className={`${clashDisplay.variable} ${generalSans.variable}  `}>
       {googleAnalyticsId ? <GoogleAnalytics ga_id={googleAnalyticsId} /> : null}
       <SubscribersContextProvider>
+		<Head>
+			<link rel="icon" href="/favicon-32x32.png" />
+		</Head>
         <Component {...pageProps} />
       </SubscribersContextProvider>
     </main>
