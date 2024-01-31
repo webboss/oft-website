@@ -24,8 +24,6 @@ const ResourcePage = ({ resourceCategoryQuery }) => {
 
 	const totalItems = allResourcesCategory.reduce(
 		(acc, item) => {
-			console.log(item.resources.length);
-			console.log(item.resources);
 			return acc + item.resources.nodes.length
 		},
 		0
