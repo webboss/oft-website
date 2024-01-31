@@ -14,6 +14,7 @@ import CopyButton from "templates/stories/copy-button"
 import { Hr } from "components/hr"
 import { ArticlePreviewList } from "components/article"
 import type { DOMNode, HTMLReactParserOptions } from "html-react-parser"
+import Date from "components/date"
 
 const Blockquote = ({ node }) => {
 	const urlLength = url.length
@@ -52,7 +53,9 @@ const Blockquote = ({ node }) => {
 const MetaData = ({ date, readTime = 4 }) => {
 	return (
 		<div className='flex md:justify-start justify-between gap-10 mb-[22px]'>
-			<Text value={date} variant='p18' className=' uppercase ' />
+			<Text  variant='p18' className=' uppercase ' >
+				<Date dateString={date}/>
+			</Text>
 			<Text
 				value={`${readTime} Mins Read`}
 				variant='p18'
