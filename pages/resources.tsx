@@ -23,9 +23,15 @@ const ResourcePage = ({ resourceCategoryQuery }) => {
 	const searchQuery = watch("search")
 
 	const totalItems = allResourcesCategory.reduce(
-		(acc, item) => acc + item.resources.nodes.length,
+		(acc, item) => {
+			console.log(item.resources.length);
+			console.log(item.resources);
+			return acc + item.resources.nodes.length
+		},
 		0
 	)
+
+	
 	const searchResources = items => {
 		const lowercaseSearchQuery = searchQuery?.toLowerCase()?.trim()
 
