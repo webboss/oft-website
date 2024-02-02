@@ -39,9 +39,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <main className={`${clashDisplay.variable} ${generalSans.variable}  `}>
       {googleAnalyticsId ? <GoogleAnalytics ga_id={googleAnalyticsId} /> : null}
       <SubscribersContextProvider>
-		<Head>
-			<link rel="icon" href="/favicon-32x32.png" />
-		</Head>
+        <Head>
+          <link rel="icon" href="/favicon-32x32.png" />
+        </Head>
         <Component {...pageProps} />
       </SubscribersContextProvider>
     </main>

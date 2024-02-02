@@ -35,7 +35,7 @@ const TheForm = ({ setIsSuccessful }) => {
       .required("Kindly enter your email address")
       .matches(
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        "Invalid email address"
+        "Invalid email address",
       ),
     first_name: yup.string().required("Kindly enter your first name"),
   });
@@ -61,11 +61,11 @@ const TheForm = ({ setIsSuccessful }) => {
           Accept: "application/json",
         },
       })
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           setIsSuccessful(true);
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
           const { message } = error;
 

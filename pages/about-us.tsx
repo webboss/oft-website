@@ -1,42 +1,43 @@
-import { GetStaticProps } from "next"
-import ctl from "@netlify/classnames-template-literals"
-import React from "react"
-import { Newsletter, Partners, Layout } from "components"
+import { GetStaticProps } from "next";
+import ctl from "@netlify/classnames-template-literals";
+import React from "react";
+import { Newsletter, Partners, Layout } from "components";
 
-import ArrowIcon from "../svgs/arrow.svg"
-import { AboutUsHeader, Team } from "templates/about-us"
-import { getAllTeamMembers } from "lib/api"
+import ArrowIcon from "../svgs/arrow.svg";
+import { AboutUsHeader, Team } from "templates/about-us";
+import { getAllTeamMembers } from "lib/api";
 
 const AboutPage = ({ allTeamMembers }) => {
-	return (
-		<Layout
-			title='About us'
-			description='Like you, our path to tech wasn’t straight but yours doesn’t have to be like that.'>
-			<>
-				<AboutUsHeader />
-				<div className={arrowsContainerStyle}>
-					<ArrowIcon className={arrowLeftStyle} />
-					<ArrowIcon className={arrowRightStyle} />
-				</div>
-				<Team teamData={allTeamMembers.teamMembers.nodes} />
-				<Newsletter />
-				<div className='md:my-[122px] my-[90px]'>
-					<Partners />
-				</div>
-			</>
-		</Layout>
-	)
-}
+  return (
+    <Layout
+      title="About us"
+      description="Like you, our path to tech wasn’t straight but yours doesn’t have to be like that."
+    >
+      <>
+        <AboutUsHeader />
+        <div className={arrowsContainerStyle}>
+          <ArrowIcon className={arrowLeftStyle} />
+          <ArrowIcon className={arrowRightStyle} />
+        </div>
+        <Team teamData={allTeamMembers.teamMembers.nodes} />
+        <Newsletter />
+        <div className="md:my-[122px] my-[90px]">
+          <Partners />
+        </div>
+      </>
+    </Layout>
+  );
+};
 
 export const getStaticProps: GetStaticProps = async () => {
-	const allTeamMembers = await getAllTeamMembers()
-	console.log({ allTeamMembers })
+  const allTeamMembers = await getAllTeamMembers();
+  console.log({ allTeamMembers });
 
-	return {
-		props: { allTeamMembers },
-		revalidate: 10,
-	}
-}
+  return {
+    props: { allTeamMembers },
+    revalidate: 10,
+  };
+};
 
 const arrowsContainerStyle = ctl(`
 md:h-[300px]
@@ -46,7 +47,7 @@ mt-[-100px]
 mb-20
 overflow-hidden
 relative
-`)
+`);
 
 const arrowLeftStyle = ctl(`
 absolute
@@ -55,7 +56,7 @@ md:bottom-[180px]
 bottom-[100px]
 md:w-auto
 w-[200px]
-`)
+`);
 
 const arrowRightStyle = ctl(`transform
 rotate-180
@@ -66,5 +67,5 @@ w-[200px]
 md:bottom-0
 bottom-[50px]
 
-`)
-export default AboutPage
+`);
+export default AboutPage;

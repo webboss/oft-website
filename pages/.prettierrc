@@ -1,0 +1,9 @@
+{
+    "printWidth": 80,
+    "editor.formatOnSave": true,
+    "proseWrap": "always",
+    "tabWidth": 2,
+    "useTabs": false,
+    "bracketSpacing": true,
+    "semi": true
+}
