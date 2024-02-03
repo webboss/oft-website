@@ -1,21 +1,21 @@
-import React from "react"
+import React from "react";
 // import CloseIcon from "svgs/close.svg"
 
-import ctl from "@netlify/classnames-template-literals"
+import ctl from "@netlify/classnames-template-literals";
 
 const Modal = ({ isOpen, closeModal, children }) => {
-	return isOpen ? (
-		<div role='dialog' className={baseStyle}>
-			<div className={containerStyle}>
-				<div className={contentStyle}>{children}</div>
-				<button className={closeButtonStyle} onClick={closeModal}>
-					{/* <CloseIcon /> */}
-					close
-				</button>
-			</div>
-		</div>
-	) : null
-}
+  return isOpen ? (
+    <div role="dialog" className={baseStyle}>
+      <div className={containerStyle}>
+        <div className={contentStyle}>{children}</div>
+        <button className={closeButtonStyle} onClick={closeModal}>
+          {/* <CloseIcon /> */}
+          close
+        </button>
+      </div>
+    </div>
+  ) : null;
+};
 
 const baseStyle = ctl(`
 w-full
@@ -33,7 +33,7 @@ flex
 items-center
 justify-center
 
-`)
+`);
 
 const containerStyle = ctl(`
 w-full
@@ -47,7 +47,7 @@ justify-center
 sm:rounded-[140px]
 rounded-[70px]
 relative
-`)
+`);
 
 const contentStyle = ctl(`
 md:w-[calc(100%-20px)]
@@ -60,7 +60,7 @@ rounded-[65px]
 flex
 items-center
 justify-center
-`)
+`);
 
 const closeButtonStyle = ctl(`
 absolute
@@ -73,6 +73,6 @@ duration-700
 transform
 hover:rotate-180
 
-`)
+`);
 
-export { Modal }
+export { Modal };
