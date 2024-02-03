@@ -46,7 +46,7 @@ export const Team = ({ teamData }) => {
 };
 
 const containerStyle = ctl(`
-  mt-[-400px]
+  mt-[-250px]
   md:flex
   flex-col
   md:items-center

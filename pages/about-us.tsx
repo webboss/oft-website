@@ -46,6 +46,7 @@ md:mt-0
 mt-[-100px]
 mb-20
 overflow-hidden
+md: invisible
 relative
 `);
 
