@@ -17,15 +17,18 @@ export const AboutUsHeader = () => {
           />
         </Text>
 
-				<div className='md:max-w-[950px] max-w-[700px] mx-auto  '>
-					<Text variant='p18' className='mt-[20px] mb-20 max-w-[1000px] md:mt-[20px]'>
-						Like you, our path to tech wasn’t straight but yours doesn’t have to
-						be like that.
-					</Text>
-				</div>
-			</Container>
-		</header>
-	)
-}
+        <div className="md:max-w-[950px] max-w-[700px] mx-auto  ">
+          <Text
+            variant="p18"
+            className="mt-[20px] mb-20 max-w-[1000px] md:mt-[20px]"
+          >
+            Like you, our path to tech wasn’t straight but yours doesn’t have to
+            be like that.
+          </Text>
+        </div>
+      </Container>
+    </header>
+  );
+};
 
 const roles = ["Managers", "Engineers", "Designers", "3D Artists", "Writers"];
