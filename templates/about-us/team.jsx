@@ -8,8 +8,8 @@ export const Team = ({ teamData }) => {
   const groupedData = Object.fromEntries(
     teamData.reduce(
       (data, m) => data.set(m.role, [...(data.get(m.role) || []), m]),
-      new Map(),
-    ),
+      new Map()
+    )
   );
 
   const teams = Object.keys(groupedData);
@@ -46,7 +46,8 @@ export const Team = ({ teamData }) => {
 };
 
 const containerStyle = ctl(`
-  mt-[-250px]
+  mt-[-240px]
+  md:mt-[-400px]
   md:flex
   flex-col
   md:items-center
