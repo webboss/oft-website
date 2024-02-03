@@ -1,2 +1,2 @@
-export * from "./header"
-export * from "./featured-stories"
+export * from "./header";
+export * from "./featured-stories";

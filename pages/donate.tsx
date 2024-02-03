@@ -1,122 +1,124 @@
-import React from "react"
+import React from "react";
 
-import { Button, Container, Input, Layout, Newsletter } from "components"
-import { DonateHeader } from "templates/donate"
-import ctl from "@netlify/classnames-template-literals"
-import { useForm } from "react-hook-form"
-import { usePaystackPayment } from "react-paystack"
+import { Button, Container, Input, Layout, Newsletter } from "components";
+import { DonateHeader } from "templates/donate";
+import ctl from "@netlify/classnames-template-literals";
+import { useForm } from "react-hook-form";
+import { usePaystackPayment } from "react-paystack";
 
 const paystack_default_config = {
-	publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
-}
+  publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
+};
 
 const basqet_default_config = {
-	public_key: process.env.GATSBY_BASQET_PUBLIC_KEY,
-	currency: "NGN",
-}
+  public_key: process.env.GATSBY_BASQET_PUBLIC_KEY,
+  currency: "NGN",
+};
 
 const DonatePage = () => {
-	const {
-		register,
-		handleSubmit,
-		reset: resetForm,
-		watch,
-		formState: { errors },
-	} = useForm({
-		mode: "onChange",
-	})
+  const {
+    register,
+    handleSubmit,
+    reset: resetForm,
+    watch,
+    formState: { errors },
+  } = useForm({
+    mode: "onChange",
+  });
 
-	const amount = watch("amount")
-	const email = watch("email")
-	const amountInKobo = amount * 100
+  const amount = watch("amount");
+  const email = watch("email");
+  const amountInKobo = amount * 100;
 
-	const onClose = () => {
-		console.log("Close")
-	}
+  const onClose = () => {
+    console.log("Close");
+  };
 
-	const onSucess = () => {
-		resetForm()
-		console.log("Successful")
-	}
+  const onSucess = () => {
+    resetForm();
+    console.log("Successful");
+  };
 
-	const initializePaystackPayment = usePaystackPayment({
-		...paystack_default_config,
-		amount: amountInKobo,
-		email,
-		reference: new Date().getTime().toString(),
-	})
+  const initializePaystackPayment = usePaystackPayment({
+    ...paystack_default_config,
+    amount: amountInKobo,
+    email,
+    reference: new Date().getTime().toString(),
+  });
 
-	//   const initializeBasqetPayment = useBasqet({
-	//     ...basqet_default_config,
-	//     email,
-	//     amount: amount,
-	//     onSuccess: () => resetForm(),
-	//     onClose: () => console.log("closed"),
-	//     onAbandoned: () => console.log("Checkout abandoned"),
-	//   });
+  //   const initializeBasqetPayment = useBasqet({
+  //     ...basqet_default_config,
+  //     email,
+  //     amount: amount,
+  //     onSuccess: () => resetForm(),
+  //     onClose: () => console.log("closed"),
+  //     onAbandoned: () => console.log("Checkout abandoned"),
+  //   });
 
-	const makePaymentBasedOnGateWay = {
-		paystack: initializePaystackPayment,
-		// basqet: initializeBasqetPayment,
-	}
-	const makeDonation = async (data, e) => {
-		e.preventDefault()
+  const makePaymentBasedOnGateWay = {
+    paystack: initializePaystackPayment,
+    // basqet: initializeBasqetPayment,
+  };
+  const makeDonation = async (data, e) => {
+    e.preventDefault();
 
-		const { payment_gateway } = data
+    const { payment_gateway } = data;
 
-		makePaymentBasedOnGateWay[payment_gateway](onSucess, onClose)
-	}
-	return (
-		<Layout
-			title='Donate'
-			description='The work we do is largely funded by individuals who buy our merch and organizations who make direct donations.'>
-			<DonateHeader />
+    makePaymentBasedOnGateWay[payment_gateway](onSucess, onClose);
+  };
+  return (
+    <Layout
+      title="Donate"
+      description="The work we do is largely funded by individuals who buy our merch and organizations who make direct donations."
+    >
+      <DonateHeader />
 
-			<Container className={formContainerStyle}>
-				<form onSubmit={handleSubmit(makeDonation)}>
-					<Input
-						placeholder='Fullname'
-						register={register("fullname")}
-						error={errors?.fullname && `${errors?.fullname?.message}`}
-					/>
-					<Input
-						placeholder='E-mail Address'
-						register={register("email")}
-						error={errors?.email && `${errors?.email.message}`}
-						type='email'
-					/>
+      <Container className={formContainerStyle}>
+        <form onSubmit={handleSubmit(makeDonation)}>
+          <Input
+            placeholder="Fullname"
+            register={register("fullname")}
+            error={errors?.fullname && `${errors?.fullname?.message}`}
+          />
+          <Input
+            placeholder="E-mail Address"
+            register={register("email")}
+            error={errors?.email && `${errors?.email.message}`}
+            type="email"
+          />
 
-					<Input
-						placeholder='Amount e.g 5000'
-						register={register("amount")}
-						error={errors?.amount && `${errors?.amount.message}`}
-						type='number'
-					/>
+          <Input
+            placeholder="Amount e.g 5000"
+            register={register("amount")}
+            error={errors?.amount && `${errors?.amount.message}`}
+            type="number"
+          />
 
-					<Input
-						name='payment_gateway'
-						id='payment_gateway'
-						register={register("payment_gateway")}
-						type='select'
-						className='cursor-pointer'>
-						<option value='paystack'>Paystack (NGN/USD)</option>
-						{/* <option value="basqet">Basqet (Crypto)</option> */}
-					</Input>
+          <Input
+            name="payment_gateway"
+            id="payment_gateway"
+            register={register("payment_gateway")}
+            type="select"
+            className="cursor-pointer"
+          >
+            <option value="paystack">Paystack (NGN/USD)</option>
+            {/* <option value="basqet">Basqet (Crypto)</option> */}
+          </Input>
 
-					<Button text='Donate' className='w-full mt-6' />
-				</form>
-			</Container>
-			<section>
-				<Newsletter />
-			</section>
-		</Layout>
-	)
-}
+          <Button text="Donate" className="w-full mt-6" />
+        </form>
+      </Container>
+      <section>
+        <Newsletter />
+      </section>
+    </Layout>
+  );
+};
 
-export default DonatePage
+export default DonatePage;
 
 const formContainerStyle = ctl(`
 !max-w-[650px]
 mt-[60px]
 mb-[160px]
-`)
+`);

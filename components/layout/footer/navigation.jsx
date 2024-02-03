@@ -10,7 +10,7 @@ const FooterNavigation = () => {
   const footerMenuKeys = Object.keys(footerMenu);
   return (
     <nav className={footerNavigationStyle}>
-      {footerMenuKeys.map(footerMenuKey => {
+      {footerMenuKeys.map((footerMenuKey) => {
         return (
           <NavList
             key={footerMenuKey}
