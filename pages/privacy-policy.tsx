@@ -1,14 +1,19 @@
 import React from "react";
-
+import Alert from "components/alert";
+import Popup from "components/popup";
 import { Text, Layout, Container } from "components";
 
+
 const PrivacyPolicyPage = () => {
+
   return (
     <Layout title="Privacy Policy">
+      <Popup/>
       <Container>
         <section className=" pt-[60px] pb-[120px]">
           <header className="py-[60px]">
             <Text variant="h2" value="Privacy Policy" />
+            
           </header>
           <div className=" article block max-w-[758px]">
             <p>
