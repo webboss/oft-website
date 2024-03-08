@@ -10,35 +10,48 @@ const Popup = () => {
 
   return (
     <>
-      {isOpen && (
-        <div className={container}>
-          <div className="popup-content">
-            <p className={p1}>
-                This Privacy Notice applies to our website, www.otherfaces.tech,
-                and its associated domains, collectively referred to as our "Service." 
-                By accessing or utilizing our Service, you acknowledge that you have, 
-                read, reviewed, comprehended, and consented to our data collection 
-                procedures as delineated in our Privacy Policy. 
-                This notice is essential for compliance with 
-                the NDPR and other pertinent regulations. {" "}
-            </p>
+        {isOpen && (
+          <div className={overlay}>
+            <div className={container}>
+              <div className="popup-content">
+                <p className={p1}>
+                    This Privacy Notice applies to our website, www.otherfaces.tech,
+                    and its associated domains, collectively referred to as our "Service." 
+                    By accessing or utilizing our Service, you acknowledge that you have, 
+                    read, reviewed, comprehended, and consented to our data collection 
+                    procedures as delineated in our Privacy Policy. 
+                    This notice is essential for compliance with 
+                    the NDPR and other pertinent regulations. {" "}
+                </p>
 
-            <p className={p2}>
-                By clicking "OK," you hereby grant consent to Otherfaces of Tech 
-                for the collection of data for website functionality 
-                and the preservation of service excellence.
-            </p>
-            <button className={button} onClick={handleClose}>OK</button>
+                <p className={p2}>
+                    By clicking "OK," you hereby grant consent to Otherfaces of Tech 
+                    for the collection of data for website functionality 
+                    and the preservation of service excellence.
+                </p>
+                <button className={button} onClick={handleClose}>OK</button>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      
     </>
   );
 };
 
+const overlay = ctl (`
+    bg-[#000]
+    h-screen
+    w-[100vw]
+    absolute
+    left-0
+    z-[10]
+    md:opacity-[.9]
+`)
+
 const container = ctl(`
     md:w-[520px]
-    md:w-[90%]
+    w-[90%]
     mx-auto
     bg-[#202021]
     p-4

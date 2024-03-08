@@ -1,5 +1,11 @@
 import React from "react";
-import Alert from "components/alert";
+import Link from "next/link";
+import ctl from "@netlify/classnames-template-literals";
+import Twitter from "../svgs/twitter.svg"
+import Mail from "../svgs/mail.svg"
+import LinkedIn from "../svgs/linkedin.svg"
+
+
 import Popup from "components/popup";
 import { Text, Layout, Container } from "components";
 
@@ -162,11 +168,52 @@ const PrivacyPolicyPage = () => {
               using any other information. The use of cookies does not contain
               any personal or private details and are free from viruses.
             </p>
+
+
+            <div className={contact}>
+              <h2 >Contact us</h2>
+                <div className={flex}>
+
+                  <div className={icons}>
+                    <Mail />
+                    <a href="mailto:hello@otherfaces.tech">hello@otherfaces.tech</a>
+                  </div>
+
+                  <div className={icons}>
+                    <Twitter />
+                    <Link href={"https://twitter.com/OtherFaces_Tech"}>Other Faces of Tech</Link>
+                  </div>
+
+                  <div className={icons}>
+                    <LinkedIn/>
+                    <Link href={"https://www.linkedin.com/company/other-faces-of-tech/"}>Other Faces of Tech</Link>
+                  </div>
+      
+                </div>
+            </div>
+
           </div>
         </section>
       </Container>
     </Layout>
   );
 };
+
+
+const contact = ctl(`
+  mt-[3em]
+`)
+
+const flex = ctl(`
+  flex
+  flex-col
+  gap-[20px]
+  mt-4
+`)
+const icons = ctl(`
+  flex
+  items-center
+  gap-[20px]
+`)
 
 export default PrivacyPolicyPage;
