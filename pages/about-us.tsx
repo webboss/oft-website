@@ -31,7 +31,6 @@ const AboutPage = ({ allTeamMembers }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const allTeamMembers = await getAllTeamMembers();
-  console.log({ allTeamMembers });
 
   return {
     props: { allTeamMembers },
