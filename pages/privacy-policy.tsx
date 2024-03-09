@@ -1,44 +1,55 @@
 import React from "react";
 import Link from "next/link";
 import ctl from "@netlify/classnames-template-literals";
-import Twitter from "../svgs/twitter.svg"
-import Mail from "../svgs/mail.svg"
-import LinkedIn from "../svgs/linkedin.svg"
-
-
-import Popup from "components/popup";
+import Twitter from "../svgs/twitter.svg";
+import Mail from "../svgs/mail.svg";
+import LinkedIn from "../svgs/linkedin.svg";
 import { Text, Layout, Container } from "components";
 
-
 const PrivacyPolicyPage = () => {
-
   return (
     <Layout title="Privacy Policy">
-      <Popup/>
       <Container>
         <section className=" pt-[60px] pb-[120px]">
           <header className="py-[60px]">
             <Text variant="h2" value="Privacy Policy" />
-            
           </header>
           <div className=" article block max-w-[758px]">
-            <p>
+            {/* <p>
               Thank you for accessing otherfaces.tech. We respect your privacy
               and want to protect your personal information. To learn more,
               please read through this privacy policy below.
+            </p> */}
+            <p>
+              This Privacy Notice applies to our website, www.otherfaces.tech,
+              and its associated domains, collectively referred to as our
+              "Service." By accessing or utilizing our Service, you acknowledge
+              that you have, read, reviewed, comprehended, and consented to our
+              data collection procedures as delineated in our Privacy Policy.
+              This notice is essential for compliance with the NDPR and other
+              pertinent regulations.
+            </p>
+            <p>
+              By using otherfaces.tech, you hereby grant consent to Otherfaces
+              of Tech for the collection of data for website functionality and
+              the preservation of service excellence.
             </p>
             <p>Our Privacy Policy explains the following; </p>
-            <ol>
-              <li>how we make use of your personal information;</li>
-              <li>
+            <ul className="pl-6">
+              <li className="list-disc">
+                how we make use of your personal information;
+              </li>
+              <li className="list-disc">
                 the steps we have taken to secure your personal information;
               </li>
-              <li>
-                your options regarding the use of your personal information. By
-                visiting the website directly or through another site, you
-                accept the practices described in this policy.
+              <li className="list-disc">
+                your options regarding the use of your personal information.
               </li>
-            </ol>
+            </ul>
+            <p>
+              By visiting the website directly or through another site, you
+              accept the practices described in this policy.
+            </p>
             <h3>1. Data Protection</h3>
             <p>
               Data Protection is a matter of trust and your privacy is important
@@ -169,29 +180,35 @@ const PrivacyPolicyPage = () => {
               any personal or private details and are free from viruses.
             </p>
 
-
             <div className={contact}>
-              <h2 >Contact us</h2>
-                <div className={flex}>
-
-                  <div className={icons}>
-                    <Mail />
-                    <a href="mailto:hello@otherfaces.tech">hello@otherfaces.tech</a>
-                  </div>
-
-                  <div className={icons}>
-                    <Twitter />
-                    <Link href={"https://twitter.com/OtherFaces_Tech"}>Other Faces of Tech</Link>
-                  </div>
-
-                  <div className={icons}>
-                    <LinkedIn/>
-                    <Link href={"https://www.linkedin.com/company/other-faces-of-tech/"}>Other Faces of Tech</Link>
-                  </div>
-      
+              <h2>Contact us</h2>
+              <div className={flex}>
+                <div className={icons}>
+                  <Mail />
+                  <a href="mailto:hello@otherfaces.tech">
+                    hello@otherfaces.tech
+                  </a>
                 </div>
-            </div>
 
+                <div className={icons}>
+                  <Twitter />
+                  <Link href={"https://twitter.com/OtherFaces_Tech"}>
+                    Other Faces of Tech
+                  </Link>
+                </div>
+
+                <div className={icons}>
+                  <LinkedIn />
+                  <Link
+                    href={
+                      "https://www.linkedin.com/company/other-faces-of-tech/"
+                    }
+                  >
+                    Other Faces of Tech
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </Container>
@@ -199,21 +216,20 @@ const PrivacyPolicyPage = () => {
   );
 };
 
-
 const contact = ctl(`
   mt-[3em]
-`)
+`);
 
 const flex = ctl(`
   flex
   flex-col
   gap-[20px]
   mt-4
-`)
+`);
 const icons = ctl(`
   flex
   items-center
   gap-[20px]
-`)
+`);
 
 export default PrivacyPolicyPage;
