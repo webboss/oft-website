@@ -26,4 +26,12 @@ describe("<Br />", () => {
 
     expect(breakTag).toHaveClass("hidden md:block");
   });
+
+  test("renders break tag on mobile devices only", () => {
+    render(<Br on="mobile" />);
+
+    const breakTag = screen.getByRole("line-break");
+
+    expect(breakTag).toHaveClass("block md:hidden");
+  });
 });
