@@ -10,4 +10,20 @@ describe("<Br />", () => {
 
     expect(breakTag).toBeInTheDocument();
   });
+
+  test("renders break tag on all devices", () => {
+    render(<Br on="all" />);
+
+    const breakTag = screen.getByRole("line-break");
+
+    expect(breakTag).toHaveClass("block");
+  });
+
+  test("renders break tag on desktop devices only", () => {
+    render(<Br on="desktop" />);
+
+    const breakTag = screen.getByRole("line-break");
+
+    expect(breakTag).toHaveClass("hidden md:block");
+  });
 });
