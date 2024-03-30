@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, test, vi } from "vitest";
 import { Button } from "./";
 
 describe("<Button />", () => {
@@ -50,5 +51,18 @@ describe("<Button />", () => {
 
     const button = screen.getByRole("button", { name: "Click me" });
     expect(button).toBeDisabled();
+  });
+
+  test("handles user click", async () => {
+    const handleClick = vi.fn();
+    const user = userEvent.setup();
+
+    render(<Button onClick={handleClick} text="Signin" />);
+
+    const button = screen.getByRole("button", { name: "Signin" });
+
+    await user.click(button);
+
+    expect(handleClick).toHaveBeenCalledOnce();
   });
 });
