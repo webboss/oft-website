@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, test, vi } from "vitest";
 import { Button } from "./";
 
-describe("<Button />", () => {
+describe("Button component", () => {
   test("renders button", () => {
     render(<Button text="Click me" />);
 
@@ -66,14 +66,25 @@ describe("<Button />", () => {
     expect(handleClick).toHaveBeenCalledOnce();
   });
 
-  test("renders button with a primary variant by default", () => {
+  test("renders button with a primary variant style by default", () => {
     render(<Button text="Click me" />);
+
+    const button = screen.getByRole("button", { name: "Click me" });
+
+    expect(button).toHaveClass(
+      "primary disabled:bg-secondary text-primary-100 gradient-blue-to-red"
+    );
+  });
+
+  test("renders button with an alternative variant style when 'variant' prop is 'alternative'", () => {
+    render(<Button variant="alternative" text="Click me" />);
 
     const button = screen.getByRole("button", { name: "Click me" });
     const buttonText = screen.getByText("Click me");
 
-    expect(button).toHaveClass(
-      "primary disabled:bg-secondary text-primary-100 gradient-blue-to-red"
+    expect(button).toHaveClass("alternative gradient-blue-to-red");
+    expect(buttonText).toHaveClass(
+      "bg-black bg-clip-content w-full h-full flex items-center justify-center rounded-full"
     );
   });
 });
