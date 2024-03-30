@@ -9,4 +9,11 @@ describe("<Nlink />", () => {
     const linkElement = screen.getByRole("link", { name: "I am a link" });
     expect(linkElement).toBeInTheDocument();
   });
+
+  test("renders link if 'href' prop is passed", () => {
+    render(<NLink href="/">I am a new link</NLink>);
+
+    const linkElement = screen.getByRole("link", { name: "I am a new link" });
+    expect(linkElement).toBeInTheDocument();
+  });
 });
