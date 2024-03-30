@@ -22,7 +22,7 @@ describe("<Button />", () => {
   });
 
   test("renders link if 'href' prop is passed", () => {
-    render(<Button to="/" text="Click me" />);
+    render(<Button href="/" text="Click me" />);
 
     const linkElement = screen.getByRole("link", { name: "Click me" });
     expect(linkElement).toBeInTheDocument();
