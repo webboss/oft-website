@@ -21,6 +21,16 @@ describe("<Button />", () => {
     expect(buttontext).not.toBeInTheDocument();
   });
 
+  test("renders button text when not loading", () => {
+    render(<Button isLoading={false} text="Click me" />);
+
+    const loadingElement = screen.queryByText("Loading");
+    const buttonText = screen.getByText("Click me");
+
+    expect(loadingElement).not.toBeInTheDocument();
+    expect(buttonText).toBeInTheDocument();
+  });
+
   test("renders link if 'href' prop is passed", () => {
     render(<Button href="/" text="Click me" />);
 
