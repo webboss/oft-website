@@ -7,6 +7,7 @@ describe("<Button />", () => {
     render(<Button text="Click me" />);
 
     const button = screen.getByRole("button", { name: "Click me" });
+
     expect(button).toBeInTheDocument();
   });
 
@@ -18,5 +19,12 @@ describe("<Button />", () => {
 
     expect(button).toBeInTheDocument();
     expect(buttontext).not.toBeInTheDocument();
+  });
+
+  test("renders link if either 'href' prop is passed", () => {
+    render(<Button to="/" text="Click me" />);
+
+    const linkElement = screen.getByRole("link", { name: "Click me" });
+    expect(linkElement).toBeInTheDocument();
   });
 });
