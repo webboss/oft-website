@@ -7,6 +7,7 @@ describe("<Nlink />", () => {
     render(<NLink to="/">I am a link</NLink>);
 
     const linkElement = screen.getByRole("link", { name: "I am a link" });
+
     expect(linkElement).toBeInTheDocument();
   });
 
@@ -14,6 +15,7 @@ describe("<Nlink />", () => {
     render(<NLink href="/">I am a new link</NLink>);
 
     const linkElement = screen.getByRole("link", { name: "I am a new link" });
+
     expect(linkElement).toBeInTheDocument();
   });
 
@@ -23,6 +25,7 @@ describe("<Nlink />", () => {
     const linkElement = screen.getByRole("link", {
       name: "I am a link to another tab",
     });
+
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute("target", "_blank");
     expect(linkElement).toHaveAttribute("rel", "noreferrer");
