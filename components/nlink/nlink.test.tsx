@@ -16,4 +16,15 @@ describe("<Nlink />", () => {
     const linkElement = screen.getByRole("link", { name: "I am a new link" });
     expect(linkElement).toBeInTheDocument();
   });
+
+  test("renders link to open in a new tab if 'href' prop is an object", () => {
+    render(<NLink href={{ url: "/" }}>I am a link to another tab</NLink>);
+
+    const linkElement = screen.getByRole("link", {
+      name: "I am a link to another tab",
+    });
+    expect(linkElement).toBeInTheDocument();
+    expect(linkElement).toHaveAttribute("target", "_blank");
+    expect(linkElement).toHaveAttribute("rel", "noreferrer");
+  });
 });
