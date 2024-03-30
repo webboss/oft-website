@@ -87,4 +87,12 @@ describe("Button component", () => {
       "bg-black bg-clip-content w-full h-full flex items-center justify-center rounded-full"
     );
   });
+
+  test("renders button with an outline variant style when 'variant' prop is 'outline'", () => {
+    render(<Button variant="outline" text="Click me" />);
+
+    const button = screen.getByRole("button", { name: "Click me" });
+
+    expect(button).toHaveClass("border border-white");
+  });
 });
