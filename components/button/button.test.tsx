@@ -34,4 +34,11 @@ describe("<Button />", () => {
     const linkElement = screen.getByRole("link", { name: "Click me" });
     expect(linkElement).toBeInTheDocument();
   });
+
+  test("is disabled when 'disabled' prop is true", () => {
+    render(<Button disabled={true} text="Click me" />);
+
+    const button = screen.getByRole("button", { name: "Click me" });
+    expect(button).toBeDisabled();
+  });
 });
