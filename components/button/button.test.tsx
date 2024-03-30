@@ -65,4 +65,15 @@ describe("<Button />", () => {
 
     expect(handleClick).toHaveBeenCalledOnce();
   });
+
+  test("renders button with a primary variant by default", () => {
+    render(<Button text="Click me" />);
+
+    const button = screen.getByRole("button", { name: "Click me" });
+    const buttonText = screen.getByText("Click me");
+
+    expect(button).toHaveClass(
+      "primary disabled:bg-secondary text-primary-100 gradient-blue-to-red"
+    );
+  });
 });
