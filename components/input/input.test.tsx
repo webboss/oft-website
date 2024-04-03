@@ -10,4 +10,12 @@ describe("Input Component", () => {
 
     expect(inputElement).toBeInTheDocument();
   });
+
+  test("renders input with label", () => {
+    render(<Input label="Test Label" />);
+
+    const inputElement = screen.getByLabelText("Test Label");
+
+    expect(inputElement).toBeInTheDocument();
+  });
 });
