@@ -38,4 +38,12 @@ describe("Input Component", () => {
 
     expect(errorText).toBeInTheDocument();
   });
+
+  test("renders select input if type=select", () => {
+    render(<Input label="Language" type="select" />);
+
+    const selectInput = screen.getByLabelText("Language");
+
+    expect(selectInput).toBeInTheDocument()
+  });
 });
