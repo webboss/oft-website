@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
 import { Input } from "./input";
-import userEvent from "@testing-library/user-event";
 
 describe("Input Component", () => {
   test("renders input without label", () => {
@@ -29,5 +29,13 @@ describe("Input Component", () => {
 
     await user.type(inputElement, "Javascript");
     expect(inputElement.value).toBe("Javascript");
+  });
+
+  test("handles input errors", () => {
+    render(<Input label="Language" error="Language is required" />);
+
+    const errorText = screen.getByText("Language is required");
+
+    expect(errorText).toBeInTheDocument();
   });
 });
