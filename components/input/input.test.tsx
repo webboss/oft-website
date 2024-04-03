@@ -31,7 +31,7 @@ describe("Input Component", () => {
     expect(inputElement.value).toBe("Javascript");
   });
 
-  test("handles input errors", () => {
+  test("shows input errors", () => {
     render(<Input label="Language" error="Language is required" />);
 
     const errorText = screen.getByText("Language is required");
