@@ -5,17 +5,17 @@ import userEvent from "@testing-library/user-event";
 
 describe("Input Component", () => {
   test("renders input without label", () => {
-    render(<Input placeholder="Test Placeholder" />);
+    render(<Input placeholder="Language" />);
 
-    const inputElement = screen.getByPlaceholderText("Test Placeholder");
+    const inputElement = screen.getByPlaceholderText("Language");
 
     expect(inputElement).toBeInTheDocument();
   });
 
   test("renders input with label", () => {
-    render(<Input label="Test Label" />);
+    render(<Input label="Language" />);
 
-    const inputElement = screen.getByLabelText("Test Label");
+    const inputElement = screen.getByLabelText("Language");
 
     expect(inputElement).toBeInTheDocument();
   });
@@ -23,11 +23,11 @@ describe("Input Component", () => {
   test("handles user input", async () => {
     const user = userEvent.setup();
 
-    render(<Input label="Username" />);
+    render(<Input label="Language" />);
 
-    const inputElement = screen.getByLabelText("Username") as HTMLInputElement;
+    const inputElement = screen.getByLabelText("Language") as HTMLInputElement;
 
-    await user.type(inputElement, "John Doe");
-    expect(inputElement.value).toBe("John Doe");
+    await user.type(inputElement, "Javascript");
+    expect(inputElement.value).toBe("Javascript");
   });
 });
