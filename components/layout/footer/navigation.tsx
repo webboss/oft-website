@@ -3,7 +3,7 @@ import ctl from "@netlify/classnames-template-literals";
 
 import { NLink } from "components/nlink";
 
-import footerMenu from "config/menu/footer.json";
+import footerMenu from "config/menu.json";
 import { Text } from "components";
 
 const FooterNavigation = () => {
