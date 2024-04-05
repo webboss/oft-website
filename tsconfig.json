@@ -25,6 +25,12 @@
       "templates/*": ["templates/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/button/index.js",
+    "components/image-with-mock/image-with-mock.tsx"
+  ],
   "exclude": ["node_modules"]
 }
