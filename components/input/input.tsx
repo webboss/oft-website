@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ctl from "@netlify/classnames-template-literals";
-import { FieldError } from "react-hook-form";
+import { UseFormRegisterReturn } from "react-hook-form";
 // import Warning from "../../../svgs/warning.svg"
 
 interface InputProps {
   label?: string;
   error?: string;
-  register: {};
+  register?: UseFormRegisterReturn;
 }
 const Input = ({
   label,
@@ -79,7 +79,7 @@ const baseStyles = `
 `;
 
 const inputErrorStyle = `
-  border-action-error 
+  border-action-error
   `;
 
 const labelStyle = ctl(`
@@ -90,7 +90,7 @@ const labelStyle = ctl(`
   font-semibold
 `);
 const errorMessageWrapStyle = ctl(`
-  flex 
+  flex
   gap-2
   items-center
   mt-[10px]
