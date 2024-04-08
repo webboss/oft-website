@@ -54,4 +54,12 @@ describe("Text component", () => {
     expect(h6Element).toBeInTheDocument();
     expect(h7Element).toBeInTheDocument();
   });
+
+  test("renders HTML content", () => {
+    render(<Text variant="p12" html="<li>List Item Text</li>" />);
+
+    const textElement = screen.getByText("List Item Text");
+
+    expect(textElement).toBeInTheDocument();
+  });
 });
