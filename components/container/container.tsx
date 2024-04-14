@@ -8,13 +8,15 @@ interface ContainerProps {
 }
 const Container = ({ className, children }: ContainerProps) => {
   return (
-    <section className={containerStyle + " " + className}>{children}</section>
+    <section className={containerStyle + " " + className} role="main">
+      {children}
+    </section>
   );
 };
 
 const containerStyle = ctl(`
   max-w-[1380px]
-  mx-auto 
+  mx-auto
   md:px-[24px]
   px-4`);
 
