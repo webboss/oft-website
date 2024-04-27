@@ -121,31 +121,31 @@ const baseStyle = ctl(`
 
 const sizes = {
   xsmall: `
-  min-w-[166px]
-  h-[45px]
+    min-w-[166px]
+    h-[45px]
   `,
   small: `
-  md:min-w-[200px]
-  h-[58px]
+    md:min-w-[200px]
+    h-[58px]
+    px-4
   `,
   medium: `
-  md:min-w-[275px]
-  py-[29px]
-  h-[58px]
-
+    md:min-w-[275px]
+    py-[29px]
+    h-[58px]
   `,
   large: `
-  md:min-w-[200px]
-  w-[200px]
-  h-[58px]
+    md:min-w-[200px]
+    w-[200px]
+    h-[58px]
   `,
   xlarge: `
-  md:min-w-[420px]
-  h-[58px]
+    md:min-w-[420px]
+    h-[58px]
   `,
   full: `
-  w-full
-  h-[58px]
+    w-full
+    h-[58px]
   `,
 };
 

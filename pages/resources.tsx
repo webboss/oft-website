@@ -50,7 +50,7 @@ const ResourcePage = ({ categories, resources }) => {
               register={register("search")}
             />
           </div>
-          <div className="flex items-center space-x-10 mt-7 mb-20">
+          <div className="flex flex-wrap items-center mt-7 mb-20">
             {activeFilters.map(([key, value]) => (
               <div className={filterItemStyle}>
                 <span>{value}</span>
@@ -196,14 +196,16 @@ const arrowsContainerStyle = ctl(`
   relative
   invisible
   lg:visible
+  hidden
+  lg:block
 `);
 
 const arrowLeftStyle = ctl(`
   absolute
   -top-20
   left-[-100px]
-  md:w-auto
-  w-[200px]
+  lg:w-auto
+  lg:w-[200px]
 `);
 
 const arrowRightStyle = ctl(`
@@ -211,8 +213,8 @@ const arrowRightStyle = ctl(`
   transform
   rotate-180
   right-[-100px]
-  md:w-auto
-  w-[200px]
+  lg:w-auto
+  lg:w-[200px]
 `);
 
 const centerContentWrapperStyle = ctl(`
@@ -232,4 +234,6 @@ const filterItemStyle = ctl(`
   flex
   items-center
   space-x-6
+  mr-8
+  mt-4
 `);
