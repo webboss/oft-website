@@ -12,7 +12,7 @@ type Href =
     };
 interface ButtonProps {
   text: string;
-  variant?: "primary" | "alternative" | "outline";
+  variant?: "primary" | "secondary" | "alternative" | "outline";
   isLoading?: true | false;
   href?: Href;
   to?: String;
@@ -84,28 +84,39 @@ const textStyle = ctl(`
 const textVariants = {
   primary: ``,
   alternative: `
-  bg-black
-  bg-clip-content
-  w-full
-  h-full
-  flex
-  items-center
-  justify-center
-  rounded-full
+    bg-black
+    bg-clip-content
+    w-full
+    h-full
+    flex
+    items-center
+    justify-center
+    rounded-full
+  `,
+  secondary: `
+    bg-white
+    bg-clip-content
+    w-full
+    h-full
+    flex
+    items-center
+    justify-center
+    rounded-full
+    text-grey
   `,
 };
 
 const baseStyle = ctl(`
-rounded-full
-text-center
-font-semibold
-transition
-duration-400
-inline-flex
-items-center
-justify-center
-disabled:cursor-not-allowed
-p-[2px]
+  rounded-full
+  text-center
+  font-semibold
+  transition
+  duration-400
+  inline-flex
+  items-center
+  justify-center
+  disabled:cursor-not-allowed
+  p-[2px]
 `);
 
 const sizes = {
@@ -140,20 +151,23 @@ const sizes = {
 
 const variants = {
   primary: `
-  primary
-  disabled:bg-secondary
-  text-primary-100
-  gradient-blue-to-red
-
-`,
+    primary
+    disabled:bg-secondary
+    text-primary-100
+    gradient-blue-to-red
+  `,
   alternative: `
-  alternative
- gradient-blue-to-red
-`,
+    alternative
+    gradient-blue-to-red
+  `,
+  secondary: `
+    secondary
+    gradient-blue-to-red
+  `,
   outline: `
-  border
-border-white
-`,
+    border
+    border-white
+  `,
 };
 
 Button.defaultProps = {
