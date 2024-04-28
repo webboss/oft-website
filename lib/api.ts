@@ -257,7 +257,7 @@ query AllCategory {
       description
       name
     }
-  
+
   }
     resources(first:1000) {
       nodes{
@@ -284,16 +284,18 @@ export async function getAllTeamMembers() {
   return data;
 }
 
-export async function getallResources() {
+export async function getAllResources() {
   const data = await fetchAPI(`
   query AllResources{
-    categories(first: 30) {
-      nodes {
-        name
-        resources {
+    resources(first: 100000) {
           nodes {
             title
             url
+            categories {
+              nodes {
+                name
+              }
+            }
             featuredImage {
               node {
                 sourceUrl
@@ -311,8 +313,6 @@ export async function getallResources() {
             }
           }
         }
-      }
-    }
   }
   `);
 

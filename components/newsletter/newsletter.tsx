@@ -7,21 +7,11 @@ import ArrowIcon from "../../svgs/arrow-right.svg";
 import ctl from "@netlify/classnames-template-literals";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useSubscribersContext } from "context/SubscribersContext";
+import { newsletterSchema } from "utils/validations";
 import { toast } from "react-toastify";
 
 /*eslint no-useless-escape: "off"*/
-const validationSchema = yup.object().shape({
-  email_address: yup
-    .string()
-    .required("Kindly enter your email address")
-    .trim()
-    .matches(
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      "Invalid email address",
-    ),
-});
 export const Newsletter = () => {
   const { noOfSubscribers } = useSubscribersContext() ?? {};
 
@@ -32,7 +22,7 @@ export const Newsletter = () => {
     formState: { errors, isValid, isSubmitting },
   } = useForm({
     mode: "onChange",
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(newsletterSchema),
   });
 
   const subscribeToNewsletter = async (data, e) => {
