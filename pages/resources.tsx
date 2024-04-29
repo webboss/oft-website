@@ -100,7 +100,7 @@ const ResourcePage = ({ categories, resources }) => {
                 variant="h3"
                 className="mt-8 leading-10 w-[500px]"
               />
-              <div>
+              {/* <div>
                 <NLink
                   href={{url: ""}}
                   className="flex md:text-inherit md:text-2xl font-medium text-[8px] items-center group mx-auto bg-black p-4 pr-5 rounded-md -mb-4"
@@ -108,7 +108,7 @@ const ResourcePage = ({ categories, resources }) => {
                   Give suggestion
                   <RightArrowIcon className=" transition md:w-[22px] w-3 transform ml-2 group-hover:translate-x-2" />
                 </NLink>
-              </div>
+              </div> */}
             </div>
           </>
         ) : (
