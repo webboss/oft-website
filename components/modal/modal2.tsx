@@ -13,7 +13,7 @@ const Modal2 = ({
 }: Modal2Props) => {
   return (
     <div role="dialog" className={wrapperStyle}>
-      <div className="bg-white px-4 py-9 py md:p-9 rounded-3xl">
+      <div className="bg-white pl-4 py-9 md:p-9 rounded-3xl">
         <div className="flex items-center justify-between mb-10 w-[90%] md:w-full">
           <Text className="!text-black" value="FILTER" variant="h6" />
           <button onClick={closeModal}>
