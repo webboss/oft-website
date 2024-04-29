@@ -242,4 +242,5 @@ const filterItemStyle = ctl(`
   space-x-6
   mr-8
   mt-4
+  text-sm
 `);
