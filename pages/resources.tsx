@@ -1,7 +1,7 @@
 import ctl from "@netlify/classnames-template-literals";
 import { GetStaticProps } from "next";
 import React from "react";
-import { Container, Input, Newsletter, Text, Layout, Button } from "components";
+import { Container, Input, Newsletter, NLink, Text, Layout, Button } from "components";
 import { getAllCategory, getAllResources } from "lib/api";
 import {
   ResourceFilterModal,
@@ -94,7 +94,7 @@ const ResourcePage = ({ categories, resources }) => {
                 </button>
               </div>
             )}
-            {/* <div className="gradient-blue-to-red pt-10 pr-20 pb-12 pl-16 mt-44 rounded-3xl flex items-end justify-between">
+            <div className="gradient-blue-to-red pt-10 pr-20 pb-12 pl-16 mt-44 rounded-3xl flex items-end justify-between">
               <Text
                 value="Couldn't find the resources you are looking for? Kindly give a suggestion."
                 variant="h3"
@@ -102,14 +102,14 @@ const ResourcePage = ({ categories, resources }) => {
               />
               <div>
                 <NLink
-                  to="/resources"
+                  href={{url: ""}}
                   className="flex md:text-inherit md:text-2xl font-medium text-[8px] items-center group mx-auto bg-black p-4 pr-5 rounded-md -mb-4"
                 >
                   Give suggestion
                   <RightArrowIcon className=" transition md:w-[22px] w-3 transform ml-2 group-hover:translate-x-2" />
                 </NLink>
               </div>
-            </div> */}
+            </div>
           </>
         ) : (
           <div className={emptyStateContainer}>
