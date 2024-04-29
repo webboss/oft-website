@@ -11,12 +11,14 @@ import {
 } from "templates/resources";
 import ArrowIcon from "svgs/arrow.svg";
 import RightArrowIcon from "svgs/arrow-right.svg";
+import FilterIcon from "svgs/filter.svg";
 import SearchIcon from "svgs/search.svg";
 import SearchInfoIcon from "svgs/search-info.svg";
 import CloseIcon from "svgs/x.svg";
 
 const ResourcePage = ({ categories, resources }) => {
   const {
+    filter,
     setFilter,
     activeFilters,
     removeFilterItem,
@@ -49,8 +51,11 @@ const ResourcePage = ({ categories, resources }) => {
               className={searchInputStyle}
               register={register("search")}
             />
+            <button onClick={() => setIsFilterModalOpen(true)} type="button">
+              <FilterIcon />
+            </button>
           </div>
-          <div className="flex flex-wrap items-center mt-7 mb-20">
+          <div className="flex flex-wrap items-center mt-3 mb-20">
             {activeFilters.map(([key, value]) => (
               <div className={filterItemStyle}>
                 <span>{value}</span>
@@ -128,6 +133,7 @@ const ResourcePage = ({ categories, resources }) => {
           closeModal={() => {
             setIsFilterModalOpen(false);
           }}
+          formData={filter}
           onComplete={(data) => {
             setFilter(data);
             setIsFilterModalOpen(false);
@@ -172,7 +178,7 @@ const searchWrapperStyle = ctl(`
     !md:border-2
     rounded-full
     px-4
-    md:px-14
+    md:px-5
 `);
 
 const searchInputStyle = ctl(`

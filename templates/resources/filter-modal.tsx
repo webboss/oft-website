@@ -1,25 +1,37 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import ctl from "@netlify/classnames-template-literals";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, Modal2, Text } from "components";
+import { Button, Input, Modal2 } from "components";
 import { resourcesFilterSchema } from "utils/validations";
 
 interface ResourceFilterModalProps {
   categories: any[];
   closeModal: () => void;
+  formData: { category: string; plan: string; type: string };
   onComplete: (data) => void;
 }
 
 const ResourceFilterModal = ({
   categories,
   closeModal,
+  formData,
   onComplete,
 }: ResourceFilterModalProps) => {
+  const [formValues, setFormValues] = useState(formData);
   const { handleSubmit, register, reset } = useForm({
     defaultValues: { category: "", type: "", plan: "" },
+    values: formValues,
     mode: "onChange",
     resolver: yupResolver(resourcesFilterSchema),
   });
+
+  const resetFormValues = (e) => {
+    e.preventDefault();
+
+    setFormValues({ category: "", type: "", plan: "" });
+    reset();
+  };
 
   return (
     <Modal2 closeModal={closeModal}>
@@ -64,10 +76,7 @@ const ResourceFilterModal = ({
             type="reset"
             text="Reset"
             variant="secondary"
-            onClick={(e) => {
-              e.preventDefault();
-              reset();
-            }}
+            onClick={resetFormValues}
           />
           <Button type="submit" text="Apply" />
         </div>
