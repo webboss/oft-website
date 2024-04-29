@@ -1,7 +1,15 @@
 import ctl from "@netlify/classnames-template-literals";
 import { GetStaticProps } from "next";
 import React from "react";
-import { Container, Input, Newsletter, NLink, Text, Layout, Button } from "components";
+import {
+  Container,
+  Input,
+  Newsletter,
+  NLink,
+  Text,
+  Layout,
+  Button,
+} from "components";
 import { getAllCategory, getAllResources } from "lib/api";
 import {
   ResourceFilterModal,
@@ -36,110 +44,113 @@ const ResourcePage = ({ categories, resources }) => {
       title="Resources"
       description="Carefully selected books, schools, courses to kickstart and supercharge your non-coding career in tech "
     >
-      <ResourcesHeader totalCount={resources?.nodes?.length} />
-      <div className={arrowsContainerStyle}>
-        <ArrowIcon className={arrowLeftStyle} />
-        <ArrowIcon className={arrowRightStyle} />
-      </div>
+      <div className="overflow-x-hidden">
+        <ResourcesHeader totalCount={resources?.nodes?.length} />
+        <div className={arrowsContainerStyle}>
+          <ArrowIcon className={arrowLeftStyle} />
+          <ArrowIcon className={arrowRightStyle} />
+        </div>
 
-      {activeFilters.length > 0 ? (
-        <div className="max-w-[700px] md:mx-auto mx-5">
-          <div className={searchWrapperStyle}>
-            <SearchIcon className="md:w-7 w-[24px]" />
-            <Input
-              placeholder="Search Resources e.g Product Design"
-              className={searchInputStyle}
-              register={register("search")}
-            />
-            <button onClick={() => setIsFilterModalOpen(true)} type="button">
-              <FilterIcon />
-            </button>
-          </div>
-          <div className="flex flex-wrap items-center mt-3 mb-20">
-            {activeFilters.map(([key, value]) => (
-              <div className={filterItemStyle}>
-                <span>{value}</span>
-                <button type="button" onClick={() => removeFilterItem(key)}>
-                  <CloseIcon />
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className={centerContentWrapperStyle}>
-          <Button
-            text="Get started"
-            size="small"
-            onClick={() => setIsFilterModalOpen(true)}
-          />
-        </div>
-      )}
-      <Container className={formContainerStyle}>
-        {resourcesToShow?.length > 0 ? (
-          <>
-            <div className={resourcesGridStyle}>
-              {resourcesToShow?.map((resource, index) => (
-                <ResourceItem key={index} resource={resource} />
+        {activeFilters.length > 0 ? (
+          <div className="max-w-[700px] md:mx-auto mx-5">
+            <div className={searchWrapperStyle}>
+              <SearchIcon className="md:w-7 w-[24px]" />
+              <Input
+                placeholder="Search Resources"
+                className={searchInputStyle}
+                register={register("search")}
+              />
+              <button onClick={() => setIsFilterModalOpen(true)} type="button">
+                <FilterIcon />
+              </button>
+            </div>
+            <div className="flex flex-wrap items-center mt-3 mb-20">
+              {activeFilters.map(([key, value]) => (
+                <div className={filterItemStyle}>
+                  <span>{value}</span>
+                  <button type="button" onClick={() => removeFilterItem(key)}>
+                    <CloseIcon />
+                  </button>
+                </div>
               ))}
             </div>
-            {resourcesToShow?.length < filteredSearchedResources?.length && (
-              <div className="flex h-full flex-col justify-center md:px-[24px] px-2">
-                <button
-                  className="flex md:text-inherit md:text-xl font-medium text-[8px] items-center group mx-auto cursor-pointer"
-                  onClick={() => setNoOfResourcesToShow((prev) => prev + 9)}
-                >
-                  See More
-                  <RightArrowIcon className=" transition md:w-[22px] w-3 transform ml-2 group-hover:translate-y-1 rotate-90" />
-                </button>
-              </div>
-            )}
-            <div className="gradient-blue-to-red pt-10 pr-20 pb-12 pl-16 mt-44 rounded-3xl flex items-end justify-between">
-              <Text
-                value="Couldn't find the resources you are looking for? Kindly give a suggestion."
-                variant="h3"
-                className="mt-8 leading-10 w-[500px]"
-              />
-              {/* <div>
-                <NLink
-                  href={{url: ""}}
-                  className="flex md:text-inherit md:text-2xl font-medium text-[8px] items-center group mx-auto bg-black p-4 pr-5 rounded-md -mb-4"
-                >
-                  Give suggestion
-                  <RightArrowIcon className=" transition md:w-[22px] w-3 transform ml-2 group-hover:translate-x-2" />
-                </NLink>
-              </div> */}
-            </div>
-          </>
+          </div>
         ) : (
-          <div className={emptyStateContainer}>
-            <SearchInfoIcon />
-            <Text variant="p16" className="mt-8 leading-10">
-              <>
-                We couldn't find anything matching to your search. <br />
-                Try again with different terms
-              </>
-            </Text>
+          <div className={centerContentWrapperStyle}>
+            <Button
+              text="Get started"
+              size="small"
+              onClick={() => setIsFilterModalOpen(true)}
+              className="px-8"
+            />
           </div>
         )}
-      </Container>
-      <section>
-        <Newsletter />
-      </section>
+        <Container className={formContainerStyle}>
+          {resourcesToShow?.length > 0 ? (
+            <>
+              <div className={resourcesGridStyle}>
+                {resourcesToShow?.map((resource, index) => (
+                  <ResourceItem key={index} resource={resource} />
+                ))}
+              </div>
+              {resourcesToShow?.length < filteredSearchedResources?.length && (
+                <div className="flex h-full flex-col justify-center md:px-[24px] px-2">
+                  <button
+                    className="flex md:text-inherit md:text-xl font-medium items-center group mx-auto cursor-pointer"
+                    onClick={() => setNoOfResourcesToShow((prev) => prev + 9)}
+                  >
+                    See More
+                    <RightArrowIcon className=" transition md:w-[22px] w-4 transform ml-2 group-hover:translate-y-1 rotate-90" />
+                  </button>
+                </div>
+              )}
+              <div className="gradient-blue-to-red md:pt-10 pr-1 md:pr-20 pb-2 md:pb-12 pl-4 md:pl-16 mt-14 md:mt-44 rounded-3xl flex flex-col md:flex-row items-end justify-between space-y-8 md:space-y-0 md:space-x-8">
+                <Text
+                  value="Couldn't find the resources you are looking for? Kindly give a suggestion."
+                  variant="h3"
+                  className="mt-8 md:leading-10 md:w-[500px]"
+                />
+                <div>
+                  <NLink
+                    href={{ url: "" }}
+                    className="flex md:text-inherit md:text-2xl font-medium items-center group mx-auto bg-black p-4 pr-5 rounded-md md:-mb-4"
+                  >
+                    Give suggestion
+                    <RightArrowIcon className=" transition md:w-[22px] w-4 transform ml-2 group-hover:translate-x-2" />
+                  </NLink>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className={emptyStateContainer}>
+              <SearchInfoIcon />
+              <Text variant="p16" className="mt-8 leading-10">
+                <>
+                  We couldn't find anything matching to your search. <br />
+                  Try again with different terms
+                </>
+              </Text>
+            </div>
+          )}
+        </Container>
+        <section>
+          <Newsletter />
+        </section>
 
-      {isFilterModalOpen && (
-        <ResourceFilterModal
-          categories={categoriesList}
-          closeModal={() => {
-            setIsFilterModalOpen(false);
-          }}
-          formData={filter}
-          onComplete={(data) => {
-            setFilter(data);
-            setIsFilterModalOpen(false);
-          }}
-        />
-      )}
+        {isFilterModalOpen && (
+          <ResourceFilterModal
+            categories={categoriesList}
+            closeModal={() => {
+              setIsFilterModalOpen(false);
+            }}
+            formData={filter}
+            onComplete={(data) => {
+              setFilter(data);
+              setIsFilterModalOpen(false);
+            }}
+          />
+        )}
+      </div>
     </Layout>
   );
 };
