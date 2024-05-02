@@ -64,7 +64,7 @@ const ResourcePage = ({ categories, resources }) => {
                 <FilterIcon />
               </button>
             </div>
-            <div className="flex flex-wrap items-center mt-3 mb-20">
+            <div className="flex flex-wrap items-center mt-3 mb-12">
               {activeFilters.map(([key, value]) => (
                 <div className={filterItemStyle}>
                   <span>{value}</span>
@@ -81,7 +81,7 @@ const ResourcePage = ({ categories, resources }) => {
               text="Get started"
               size="small"
               onClick={() => setIsFilterModalOpen(true)}
-              className="px-8"
+              className="px-8 mb-8 md:mb-0"
             />
           </div>
         )}
@@ -112,7 +112,9 @@ const ResourcePage = ({ categories, resources }) => {
                 />
                 <div>
                   <NLink
-                    href={{ url: "" }}
+                    href={{
+                      url: "https://forms.gle/yfr3QURUQcZQh3xd6",
+                    }}
                     className="flex md:text-inherit md:text-2xl font-medium items-center group mx-auto bg-black p-4 pr-5 rounded-md md:-mb-4"
                   >
                     Give suggestion
