@@ -64,7 +64,7 @@ const ResourcePage = ({ categories, resources }) => {
                 <FilterIcon />
               </button>
             </div>
-            <div className="flex flex-wrap items-center mt-3 mb-20">
+            <div className="flex flex-wrap items-center mt-3 mb-12">
               {activeFilters.map(([key, value]) => (
                 <div className={filterItemStyle}>
                   <span>{value}</span>
@@ -81,7 +81,7 @@ const ResourcePage = ({ categories, resources }) => {
               text="Get started"
               size="small"
               onClick={() => setIsFilterModalOpen(true)}
-              className="px-8"
+              className="px-8 mb-8 md:mb-0"
             />
           </div>
         )}
