@@ -112,7 +112,9 @@ const ResourcePage = ({ categories, resources }) => {
                 />
                 <div>
                   <NLink
-                    href={{ url: "" }}
+                    href={{
+                      url: "https://forms.gle/yfr3QURUQcZQh3xd6",
+                    }}
                     className="flex md:text-inherit md:text-2xl font-medium items-center group mx-auto bg-black p-4 pr-5 rounded-md md:-mb-4"
                   >
                     Give suggestion
