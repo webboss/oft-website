@@ -19,7 +19,7 @@ export const Roadmaps = () => {
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-[50px]">
           {roadmaps
-            .sort((a, b) => a.comingSoon - b.comingSoon)
+            // .sort((a, b) => a.comingSoon - b.comingSoon)
             .map((roadmap) => {
               const { title } = roadmap;
 

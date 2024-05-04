@@ -12,7 +12,7 @@ type Href =
     };
 interface ButtonProps {
   text: string;
-  variant?: "primary" | "alternative" | "outline";
+  variant?: "primary" | "secondary" | "alternative" | "outline";
   isLoading?: true | false;
   href?: Href;
   to?: String;
@@ -84,76 +84,90 @@ const textStyle = ctl(`
 const textVariants = {
   primary: ``,
   alternative: `
-  bg-black
-  bg-clip-content
-  w-full
-  h-full
-  flex
-  items-center
-  justify-center
-  rounded-full
+    bg-black
+    bg-clip-content
+    w-full
+    h-full
+    flex
+    items-center
+    justify-center
+    rounded-full
+  `,
+  secondary: `
+    bg-white
+    bg-clip-content
+    w-full
+    h-full
+    flex
+    items-center
+    justify-center
+    rounded-full
+    text-grey
   `,
 };
 
 const baseStyle = ctl(`
-rounded-full
-text-center
-font-semibold
-transition
-duration-400
-inline-flex
-items-center
-justify-center
-disabled:cursor-not-allowed
-p-[2px]
+  rounded-full
+  text-center
+  font-semibold
+  transition
+  duration-400
+  inline-flex
+  items-center
+  justify-center
+  disabled:cursor-not-allowed
+  p-[2px]
 `);
 
 const sizes = {
   xsmall: `
-  min-w-[166px]
-  h-[45px]
+    min-w-[166px]
+    h-[45px]
   `,
   small: `
-  md:min-w-[200px]
-  h-[58px]
+    md:min-w-[200px]
+    h-[58px]
+    px-4
   `,
   medium: `
-  md:min-w-[275px]
-  py-[29px]
-  h-[58px]
-
+    md:min-w-[275px]
+    py-[29px]
+    h-[58px]
   `,
   large: `
-  md:min-w-[200px]
-  w-[200px]
-  h-[58px]
+    md:min-w-[200px]
+    w-[200px]
+    h-[58px]
   `,
   xlarge: `
-  md:min-w-[420px]
-  h-[58px]
+    md:min-w-[420px]
+    h-[58px]
   `,
   full: `
-  w-full
-  h-[58px]
+    w-full
+    h-[58px]
   `,
 };
 
 const variants = {
   primary: `
-  primary
-  disabled:bg-secondary
-  text-primary-100
-  gradient-blue-to-red
-
-`,
+    primary
+    disabled:bg-secondary
+    text-primary-100
+    gradient-blue-to-red
+  `,
   alternative: `
-  alternative
- gradient-blue-to-red
-`,
+    alternative
+    gradient-blue-to-red
+  `,
+  secondary: `
+    secondary
+    gradient-blue-to-red
+  `,
   outline: `
-  border
-border-white
-`,
+    border
+    border-white
+  `,
 };
 
 Button.defaultProps = {

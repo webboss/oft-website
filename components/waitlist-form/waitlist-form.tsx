@@ -114,7 +114,7 @@ const TheForm = ({ setIsSuccessful }) => {
           disabled={!isValid}
           isLoading={isSubmitting}
           text="Join waitlist"
-          size="full"
+          size="xlarge"
         />
       </form>
     </section>
@@ -137,14 +137,14 @@ const SuccessMessage = () => {
           url: "https://docs.google.com/forms/d/15rQZ6hd8pf8x68EkS3ThJwBktcYDd1w_ywTVF88kGz4/",
         }}
         text="Take survey"
-        size="full"
+        size="xlarge"
       />
       <br />
       <br />
       <Button
         href={"https://paystack.shop/other-faces-of-tech"}
         text="Get merch"
-        size="full"
+        size="xlarge"
         variant="alternative"
       />
     </section>
