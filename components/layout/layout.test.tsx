@@ -26,4 +26,16 @@ describe("Layout", () => {
 
     expect(text).toBeInTheDocument();
   });
+
+  test("renders footer", () => {
+    render(
+      <Layout title="Test Layout">
+        <p>Hello world</p>
+      </Layout>
+    );
+
+    const footer = screen.getByRole("contentinfo");
+
+    expect(footer).toBeInTheDocument();
+  });
 });
