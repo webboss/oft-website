@@ -50,7 +50,7 @@ const NavBar = () => {
 const Hamburger = ({ onToggle }) => {
   return (
     <button className={hamburgerButton} onClick={onToggle}>
-      <MenuIcon className="md:w-auto w-[27px]" />
+      <MenuIcon title="Menu" className="md:w-auto w-[27px]" />
     </button>
   );
 };
