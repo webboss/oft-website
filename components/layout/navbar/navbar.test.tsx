@@ -40,4 +40,15 @@ describe("Navbar", () => {
     expect(logo).toBeInTheDocument();
   });
 
+  test("renders link to get merch", () => {
+    render(<NavBar />);
+
+    const link = screen.getByRole("link", { name: "Get merch" });
+
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute(
+      "href",
+      "https://paystack.shop/other-faces-of-tech"
+    );
+  });
 });
