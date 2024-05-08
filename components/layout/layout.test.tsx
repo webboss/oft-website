@@ -14,4 +14,16 @@ describe("Layout", () => {
 
     expect(header).toBeInTheDocument();
   });
+
+  test("renders element passed as children props", () => {
+    render(
+      <Layout title="Test Layout">
+        <p>Hello world</p>
+      </Layout>
+    );
+
+    const text = screen.getByText("Hello world");
+
+    expect(text).toBeInTheDocument();
+  });
 });
