@@ -51,4 +51,13 @@ describe("Navbar", () => {
       "https://paystack.shop/other-faces-of-tech"
     );
   });
+
+  test("renders link to donate", () => {
+    render(<NavBar />);
+
+    const link = screen.getByRole("link", { name: "Donate" });
+
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute("href", "/donate");
+  });
 });
