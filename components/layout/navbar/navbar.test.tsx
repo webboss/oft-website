@@ -31,4 +31,13 @@ describe("Navbar", () => {
     expect(closeIcon).toBeInTheDocument();
     expect(header).toHaveClass("h-full");
   });
+
+  test("renders logo", () => {
+    render(<NavBar />);
+
+    const logo = screen.getByRole("img", { name: "Otherfaces of Tech" });
+
+    expect(logo).toBeInTheDocument();
+  });
+
 });
