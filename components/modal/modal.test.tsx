@@ -38,4 +38,16 @@ describe("Modal", () => {
 
     expect(text).toBeInTheDocument();
   });
+
+  test("renders close button when modal is open", () => {
+    render(
+      <Modal isOpen={true} closeModal={() => {}}>
+        <></>
+      </Modal>
+    );
+
+    const closeButton = screen.getByRole("button", { name: "close" });
+
+    expect(closeButton).toBeInTheDocument();
+  });
 });
