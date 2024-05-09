@@ -15,10 +15,10 @@ const Partners = () => {
   );
 };
 
-const Partner = ({ Logo, href }) => {
+const Partner = ({ Logo, href, name }) => {
   return (
     <NLink href={href} className="inline-block">
-      <Logo height="28px" className="inline-block mx-3 " />
+      <Logo height="28px" className="inline-block mx-3 " title={name} />
     </NLink>
   );
 };
