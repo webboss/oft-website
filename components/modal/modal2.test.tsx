@@ -20,4 +20,19 @@ describe("Modal2", () => {
     expect(title).toBeInTheDocument();
     expect(modal).toContain(title);
   });
+
+  test("renders modal with children prop", () => {
+    render(
+      <Modal2 title="Test Modal2" closeModal={() => {}}>
+        <h3>Please wait..</h3>
+      </Modal2>
+    );
+
+    const text = screen.getByRole("heading", {
+      level: 3,
+      name: "Please wait..",
+    });
+
+    expect(text).toBeInTheDocument();
+  });
 });
