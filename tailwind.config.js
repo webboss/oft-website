@@ -77,8 +77,8 @@ module.exports = {
                 grey: {
                     DEFAULT: "#7C7C7C",
                     100: "#D9D9D9",
-                    200: "#D7D7D7"
-                }
+                    200: "#D7D7D7",
+                },
             },
 
             boxShadow: {

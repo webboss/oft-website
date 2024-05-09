@@ -1,5 +1,5 @@
 import React from "react";
-// import CloseIcon from "svgs/close.svg"
+// import CloseIcon from "@/svgs/close.svg"
 
 import ctl from "@netlify/classnames-template-literals";
 

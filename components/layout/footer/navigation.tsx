@@ -1,9 +1,9 @@
 import React from "react";
 import ctl from "@netlify/classnames-template-literals";
 
-import { NLink } from "components/nlink";
+import { NLink } from "@/components/nlink";
 
-import footerMenu from "config/menu.json";
+import footerMenu from "@/config/menu.json";
 import { Text } from "components";
 
 const FooterNavigation = () => {

@@ -3,7 +3,7 @@ import ctl from "@netlify/classnames-template-literals";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, Modal2 } from "components";
-import { resourcesFilterSchema } from "utils/validations";
+import { resourcesFilterSchema } from "@/utils/validations";
 
 interface ResourceFilterModalProps {
   categories: any[];

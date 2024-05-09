@@ -1,5 +1,5 @@
 import { NLink, Container } from "components";
-import { partners } from "config/partners";
+import { partners } from "@/config/partners";
 
 import React from "react";
 

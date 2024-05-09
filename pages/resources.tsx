@@ -16,13 +16,13 @@ import {
   ResourceItem,
   ResourcesHeader,
   useResources,
-} from "templates/resources";
-import ArrowIcon from "svgs/arrow.svg";
-import RightArrowIcon from "svgs/arrow-right.svg";
-import FilterIcon from "svgs/filter.svg";
-import SearchIcon from "svgs/search.svg";
-import SearchInfoIcon from "svgs/search-info.svg";
-import CloseIcon from "svgs/x.svg";
+} from "@/templates/resources";
+import ArrowIcon from "@/svgs/arrow.svg";
+import RightArrowIcon from "@/svgs/arrow-right.svg";
+import FilterIcon from "@/svgs/filter.svg";
+import SearchIcon from "@/svgs/search.svg";
+import SearchInfoIcon from "@/svgs/search-info.svg";
+import CloseIcon from "@/svgs/x.svg";
 
 const ResourcePage = ({ categories, resources }) => {
   const {

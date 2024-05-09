@@ -4,7 +4,7 @@ import { Button, Container, Input, Layout, Newsletter } from "components";
 import ctl from "@netlify/classnames-template-literals";
 import { useForm } from "react-hook-form";
 
-import { RoadmapsHeader } from "templates/roadmaps";
+import { RoadmapsHeader } from "@/templates/roadmaps";
 import { toast } from "react-toastify";
 import { getAllCategory } from "lib/api";
 

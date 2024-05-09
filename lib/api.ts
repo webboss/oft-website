@@ -1,4 +1,4 @@
-import { sleep } from "utils/sleep";
+import { sleep } from "@/utils/sleep";
 
 const API_URL = process.env.WORDPRESS_API_URL;
 
@@ -6,8 +6,9 @@ async function fetchAPI(query = "", { variables }: Record<string, any> = {}) {
   const headers = { "Content-Type": "application/json" };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
-    headers["Authorization"] =
-      `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
+    headers[
+      "Authorization"
+    ] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
   /**
@@ -51,7 +52,7 @@ export async function getPreviewPost(id, idType = "DATABASE_ID") {
     }`,
     {
       variables: { id, idType },
-    },
+    }
   );
   return data.post;
 }
@@ -109,7 +110,7 @@ export async function getAllPostsForHome(preview) {
         onlyEnabled: !preview,
         preview,
       },
-    },
+    }
   );
 
   return data?.posts;
@@ -205,7 +206,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
         id: isDraft ? postPreview.id : slug,
         idType: isDraft ? "DATABASE_ID" : "SLUG",
       },
-    },
+    }
   );
 
   // Draft posts may not have an slug
@@ -224,7 +225,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
   const NO_OF_ITEMS = 3;
   const indexOfPost = totalPosts.findIndex(({ node }) => node.slug === slug);
   const postsWithoutCurrentPost = totalPosts.filter(
-    ({ node }) => node.slug !== slug,
+    ({ node }) => node.slug !== slug
   );
 
   const relatedPosts = postsWithoutCurrentPost.filter((_, index) => {

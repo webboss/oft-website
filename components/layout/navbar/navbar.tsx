@@ -3,7 +3,7 @@ import ctl from "@netlify/classnames-template-literals";
 import { Menu } from "./menu";
 import { NLink } from "../../nlink";
 import { Button } from "../../button";
-import MenuIcon from "svgs/menu.svg";
+import MenuIcon from "@/svgs/menu.svg";
 import Image from "next/image";
 
 const NavBar = () => {
