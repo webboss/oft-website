@@ -26,4 +26,16 @@ describe("Modal", () => {
 
     expect(modal).not.toBeInTheDocument();
   });
+
+  test("renders modal with children props when isOpen=true", () => {
+    render(
+      <Modal isOpen={true} closeModal={() => {}}>
+        <h3>Test Modal</h3>
+      </Modal>
+    );
+
+    const text = screen.getByRole("heading", { level: 3, name: "Test Modal" });
+
+    expect(text).toBeInTheDocument();
+  });
 });
