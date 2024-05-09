@@ -14,4 +14,12 @@ describe("Partners", () => {
       expect(logo.tagName).eq("svg");
     });
   });
+
+  test("renders link to partners", () => {
+    render(<Partners />);
+
+    const partnerlinks = screen.getAllByRole("link");
+
+    expect(partnerlinks.length).toBe(partners.length);
+  });
 });
