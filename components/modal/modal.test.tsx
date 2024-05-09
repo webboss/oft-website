@@ -14,4 +14,16 @@ describe("Modal", () => {
 
     expect(modal).toBeInTheDocument();
   });
+
+  test("does not render modal if isOpen=false", () => {
+    render(
+      <Modal isOpen={false} closeModal={() => {}}>
+        <></>
+      </Modal>
+    );
+
+    const modal = screen.queryByRole("dialog");
+
+    expect(modal).not.toBeInTheDocument();
+  });
 });
