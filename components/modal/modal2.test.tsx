@@ -35,4 +35,19 @@ describe("Modal2", () => {
 
     expect(text).toBeInTheDocument();
   });
+
+  test("renders close button", () => {
+    render(
+      <Modal2 title="Test Modal2" closeModal={() => {}}>
+        <></>
+      </Modal2>
+    );
+
+    const closeButton = screen.getByRole("button");
+    const closeIcon = within(closeButton).getByTitle("Close");
+
+    expect(closeIcon.tagName).eq("svg");
+    expect(closeIcon).toBeInTheDocument();
+    expect(closeButton).toBeInTheDocument();
+  });
 });
