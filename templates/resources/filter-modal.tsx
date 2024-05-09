@@ -34,7 +34,7 @@ const ResourceFilterModal = ({
   };
 
   return (
-    <Modal2 closeModal={closeModal}>
+    <Modal2 title="FILTER" closeModal={closeModal}>
       <form onSubmit={handleSubmit(onComplete)}>
         <div className="grid md:grid-cols-2 md:gap-y-2 md:gap-x-40">
           <Input
