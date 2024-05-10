@@ -42,4 +42,20 @@ describe("WaitlistForm", () => {
     expect(button).toBeInTheDocument();
   });
 
+  test("handles invalid email error on submit", async () => {
+    const user = userEvent.setup();
+
+    render(<WailistForm isOpen={true} closeModal={() => {}} />);
+
+    const emailInput = screen.getByPlaceholderText("Email Address");
+    const button = screen.getByRole("button", { name: "Join waitlist" });
+
+    await user.type(emailInput, "Hello");
+    await user.click(button);
+
+    const emailError = await screen.findByText("Invalid email address");
+
+    expect(emailError).toBeInTheDocument();
+  });
+
 });
