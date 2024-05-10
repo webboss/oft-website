@@ -58,4 +58,19 @@ describe("WaitlistForm", () => {
     expect(emailError).toBeInTheDocument();
   });
 
+  test.skip("handles form submit", async () => {
+    const user = userEvent.setup();
+    vi.mock("");
+
+    render(<WailistForm isOpen={true} closeModal={() => {}} />);
+
+    const emailInput = screen.getByPlaceholderText("Email Address");
+    const firstNameinput = screen.getByPlaceholderText("Email Address");
+    const button = screen.getByRole("button", { name: "Join waitlist" });
+
+    await user.type(emailInput, "no-reply@test.com");
+    await user.type(firstNameinput, "Test");
+
+    await user.click(button);
+  });
 });
