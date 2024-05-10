@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
-import MENU_LINKS from "config/menu.json";
+import MENU_LINKS from "@/config/menu.json";
 import { Menu } from "./menu";
 
 describe("Mobile Menu", () => {

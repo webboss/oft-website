@@ -1,9 +1,9 @@
 import React from "react";
 
 import { Button, Text, Container } from "components";
-import { Hr } from "components/hr";
+import { Hr } from "@/components/hr";
 
-import { ArticlePreviewList, ArticlePreviewProps } from "components/article";
+import { ArticlePreviewList, ArticlePreviewProps } from "@/components/article";
 import Image from "next/image";
 
 export const HomeFeaturedStories = ({

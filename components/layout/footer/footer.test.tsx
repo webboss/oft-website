@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import { MainFooter } from "../footer";
-import MENU_LINKS from "config/menu.json";
+import MENU_LINKS from "@/config/menu.json";
 
 describe("Footer", () => {
   test("renders footer element", () => {

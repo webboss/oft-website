@@ -2,8 +2,8 @@ import ctl from "@netlify/classnames-template-literals";
 import Image from "next/image";
 import React, { Key } from "react";
 import { Container, NLink, Text } from "components";
-import menulist from "config/menu.json";
-import CloseIcon from "svgs/close.svg";
+import menulist from "@/config/menu.json";
+import CloseIcon from "@/svgs/close.svg";
 
 const Menu = ({ onToggle }) => {
   return (
@@ -11,7 +11,11 @@ const Menu = ({ onToggle }) => {
       <Container>
         <header className={headerStyle}>
           <button className={closeButtonStyle} onClick={onToggle}>
-            <CloseIcon title="Close" width={32} className="md:w-[32px] w-[20px]" />
+            <CloseIcon
+              title="Close"
+              width={32}
+              className="md:w-[32px] w-[20px]"
+            />
           </button>
 
           <NLink to="/">

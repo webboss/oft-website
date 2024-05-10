@@ -1,6 +1,6 @@
 import ctl from "@netlify/classnames-template-literals";
 import { Text } from "components";
-import CloseIcon from "svgs/x-pattern.svg";
+import CloseIcon from "@/svgs/x-pattern.svg";
 
 interface Modal2Props {
   children: React.ReactNode;
@@ -8,11 +8,7 @@ interface Modal2Props {
   title: string;
 }
 
-const Modal2 = ({
-  children,
-  closeModal,
-  title,
-}: Modal2Props) => {
+const Modal2 = ({ children, closeModal, title }: Modal2Props) => {
   return (
     <div role="dialog" className={wrapperStyle}>
       <div className="bg-white px-4 py-9 md:p-9 rounded-3xl">
@@ -22,7 +18,7 @@ const Modal2 = ({
             <CloseIcon title="Close" />
           </button>
         </div>
-       {children}
+        {children}
       </div>
     </div>
   );

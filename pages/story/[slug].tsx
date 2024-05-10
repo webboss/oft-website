@@ -9,12 +9,12 @@ import parse, { Element } from "html-react-parser";
 import { sanitize } from "isomorphic-dompurify";
 import { readingTime } from "reading-time-estimator";
 import Image from "next/image";
-import Share, { popupWindow, url } from "templates/stories/share";
-import CopyButton from "templates/stories/copy-button";
-import { Hr } from "components/hr";
-import { ArticlePreviewList } from "components/article";
+import Share, { popupWindow, url } from "@/templates/stories/share";
+import CopyButton from "@/templates/stories/copy-button";
+import { Hr } from "@/components/hr";
+import { ArticlePreviewList } from "@/components/article";
 import type { DOMNode, HTMLReactParserOptions } from "html-react-parser";
-import Date from "components/date";
+import Date from "@/components/date";
 
 const Blockquote = ({ node }) => {
   const urlLength = url.length;
@@ -24,7 +24,7 @@ const Blockquote = ({ node }) => {
   const expectedStringLength = tweetLength - urlLength - ellipsis.length - 2;
   const firstParagraph = `${node[0].children[0].data}`.substring(
     0,
-    expectedStringLength,
+    expectedStringLength
   );
   return (
     <div
@@ -41,7 +41,7 @@ const Blockquote = ({ node }) => {
         <Button
           onClick={() =>
             popupWindow(
-              `https://twitter.com/share?text=${firstParagraph}${ellipsis}&url=${url.trim()}`,
+              `https://twitter.com/share?text=${firstParagraph}${ellipsis}&url=${url.trim()}`
             )
           }
           text="Tweet this"

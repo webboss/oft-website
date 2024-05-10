@@ -1,10 +1,10 @@
 import React from "react";
 
-import Layout from "components/layout";
+import Layout from "@/components/layout";
 import { Container, Newsletter } from "components";
 import ctl from "@netlify/classnames-template-literals";
 
-import { ResourceCategory, ResourcesHeader } from "templates/resources";
+import { ResourceCategory, ResourcesHeader } from "@/templates/resources";
 import { graphql } from "gatsby";
 
 const ResourcePage = ({ data }) => {

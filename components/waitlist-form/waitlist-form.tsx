@@ -1,8 +1,8 @@
-import { Modal } from "components/modal";
+import { Modal } from "@/components/modal";
 import React, { useState } from "react";
 import ctl from "@netlify/classnames-template-literals";
-import { Input } from "components/input";
-import { Button } from "components/button";
+import { Input } from "@/components/input";
+import { Button } from "@/components/button";
 import { useForm } from "react-hook-form";
 import SuccessIcon from "assets/images/svgs/success.svg";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -35,7 +35,7 @@ const TheForm = ({ setIsSuccessful }) => {
       .required("Kindly enter your email address")
       .matches(
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        "Invalid email address",
+        "Invalid email address"
       ),
     first_name: yup.string().required("Kindly enter your first name"),
   });
