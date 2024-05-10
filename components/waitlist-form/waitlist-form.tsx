@@ -4,7 +4,7 @@ import ctl from "@netlify/classnames-template-literals";
 import { Input } from "@/components/input";
 import { Button } from "@/components/button";
 import { useForm } from "react-hook-form";
-import SuccessIcon from "assets/images/svgs/success.svg";
+import SuccessIcon from "@/svgs/success.svg";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -96,14 +96,6 @@ const TheForm = ({ setIsSuccessful }) => {
             placeholder="Email Address"
             name="email_address"
             type="email"
-            register={register("email_address")}
-            error={errors?.email_address?.message}
-            required
-          />
-          <Input
-            placeholder="Email Address"
-            name="email_address"
-            type="select"
             register={register("email_address")}
             error={errors?.email_address?.message}
             required
