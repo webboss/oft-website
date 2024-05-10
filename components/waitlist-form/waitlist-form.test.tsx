@@ -25,4 +25,21 @@ describe("WaitlistForm", () => {
     expect(handleClose).toHaveBeenCalledOnce();
   });
 
+  test("renders form", () => {
+    render(<WailistForm isOpen={true} closeModal={() => {}} />);
+
+    const title = screen.getByRole("heading", {
+      level: 3,
+      name: "Be the first to know when we launch",
+    });
+    const firstNameInput = screen.getByPlaceholderText("First Name");
+    const emailInput = screen.getByPlaceholderText("Email Address");
+    const button = screen.getByRole("button", { name: "Join waitlist" });
+
+    expect(title).toBeInTheDocument();
+    expect(firstNameInput).toBeInTheDocument();
+    expect(emailInput).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
+  });
+
 });
