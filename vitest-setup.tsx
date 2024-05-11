@@ -3,8 +3,13 @@ import { cleanup } from "@testing-library/react";
 import * as matchers from "@testing-library/jest-dom/matchers";
 import "@testing-library/jest-dom/vitest"; // Very important. Why? *.toBeInTheDocument() will throw undefined error.
 import { ClassAttributes, ImgHTMLAttributes } from "react";
+import createFetchMock from "vitest-fetch-mock";
 
 expect.extend(matchers);
+
+const fetchMocker = createFetchMock(vi);
+
+fetchMocker.enableMocks();
 
 afterEach(() => {
   cleanup();
