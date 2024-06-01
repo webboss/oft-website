@@ -16,4 +16,16 @@ describe("Avatar component", () => {
 
     expect(logo).toBeInTheDocument();
   });
+
+  test("renders author's name", () => {
+    const author = {
+      node: { name: "Jane Doe", avatar: { url: "" } },
+    };
+
+    render(<Avatar author={author} />);
+
+    const text = screen.getByText(author.node.name);
+
+    expect(text).toBeInTheDocument();
+  });
 });
