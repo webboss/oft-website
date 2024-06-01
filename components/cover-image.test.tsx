@@ -16,4 +16,22 @@ describe("CoverImage component", () => {
 
     expect(image).toBeInTheDocument();
   });
+
+  test("renders image with link", () => {
+    const imageDetails = {
+      title: "Test Image",
+      coverImage: { node: { sourceUrl: "/test-cover-image" } },
+      slug: "test-image",
+    };
+
+    render(<CoverImage {...imageDetails} />);
+
+    const link = screen.getByRole("link");
+    const image = within(link).getByRole("img", {
+      name: `Cover Image for ${imageDetails.title}`,
+    });
+
+    expect(image).toBeInTheDocument();
+    expect(link).toHaveAttribute("href", `/posts/${imageDetails.slug}`);
+  });
 });
