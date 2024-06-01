@@ -28,4 +28,18 @@ describe("Avatar component", () => {
 
     expect(text).toBeInTheDocument();
   });
+
+  test("renders author's firstName and lastName", () => {
+    const author = {
+      node: { firstName: "John", lastName: "Doe", avatar: { url: "" } },
+    };
+
+    render(<Avatar author={author} />);
+
+    const authorName = `${author.node.firstName} ${author.node.lastName}`;
+
+    const text = screen.getByText(authorName);
+
+    expect(text).toBeInTheDocument();
+  });
 });
