@@ -22,4 +22,16 @@ describe("Roadmaps", () => {
       expect(featuredRoadmapTitle).toBeInTheDocument();
     });
   });
+
+  test("renders coming soon tag if roadmap is not available", () => {
+    ROADMAPS.map((roadmap) => {
+      const comingSoonText = screen.queryByText("Coming Soons");
+
+      if (roadmap.comingSoon) {
+        expect(comingSoonText).toBeInTheDocument();
+      } else {
+        expect(comingSoonText).not.toBeInTheDocument();
+      }
+    });
+  });
 });
