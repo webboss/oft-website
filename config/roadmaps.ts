@@ -3,7 +3,7 @@ export const ROADMAPS = [
     title: "Product Design",
     description:
       "The process of imagining, creating, and iterating products that solve users' problems or address specific needs in a given market",
-    comingSoon: false,
+    comingSoon: true,
   },
   {
     title: "Product Management",

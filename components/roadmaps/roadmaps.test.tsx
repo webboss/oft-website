@@ -24,14 +24,11 @@ describe("Roadmaps", () => {
   });
 
   test("renders coming soon tag if roadmap is not available", () => {
-    ROADMAPS.map((roadmap) => {
-      const comingSoonText = screen.queryByText("Coming Soons");
+    render(<Roadmaps />);
 
-      if (roadmap.comingSoon) {
-        expect(comingSoonText).toBeInTheDocument();
-      } else {
-        expect(comingSoonText).not.toBeInTheDocument();
-      }
-    });
+    const comingSoonRoadmaps = ROADMAPS.filter((roadmap) => roadmap.comingSoon);
+    const comingSoonTextElements = screen.queryAllByText("Coming Soon");
+
+    expect(comingSoonTextElements.length).to.eq(comingSoonRoadmaps.length);
   });
 });
