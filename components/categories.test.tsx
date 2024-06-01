@@ -19,4 +19,17 @@ describe("Categories component", () => {
       expect(screen.getByText(category.node.name)).toBeInTheDocument()
     );
   });
+
+  test("renders one category", () => {
+    const category = {
+      edges: {
+        node: {
+          name: "Category 1",
+        },
+      },
+    };
+    render(<Categories categories={category} />);
+
+    expect(screen.getByText(category.edges.node.name)).toBeInTheDocument();
+  });
 });
