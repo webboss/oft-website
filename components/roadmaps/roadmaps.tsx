@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, Container } from "components";
 import Link from "next/link";
+import { ROADMAPS } from "@/config/roadmaps";
 
 export const Roadmaps = () => {
   return (
@@ -18,7 +19,7 @@ export const Roadmaps = () => {
 
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-[50px]">
-          {roadmaps
+          {ROADMAPS
             // .sort((a, b) => a.comingSoon - b.comingSoon)
             .map((roadmap) => {
               const { title } = roadmap;
@@ -55,42 +56,3 @@ const FeaturedRoadMap = ({ title, description, comingSoon }) => {
     </Link>
   );
 };
-
-const roadmaps = [
-  {
-    title: "Product Design",
-    description:
-      "The process of imagining, creating, and iterating products that solve users' problems or address specific needs in a given market",
-    comingSoon: false,
-  },
-  {
-    title: "Product Management",
-    description:
-      "This is an organizational function that guides every step of a product's lifecycle.",
-    comingSoon: false,
-  },
-  {
-    title: "UX ",
-    description:
-      "The practice of writing carefully considered information that addresses people's contexts, needs, and behaviors. ",
-    comingSoon: false,
-  },
-  {
-    title: "Data Analytics ",
-    description:
-      "The process of examining data sets in order to find trends and draw conclusions about the information they contain.",
-    comingSoon: false,
-  },
-  {
-    title: "Community Managment ",
-    description:
-      "The process of building an authentic community among a business's customers, employees, and partners.",
-    comingSoon: false,
-  },
-  {
-    title: "Digital Marketing ",
-    description:
-      "The promotion of brands to connect with potential customers using the internet and other forms of digital communication.",
-    comingSoon: false,
-  },
-];
