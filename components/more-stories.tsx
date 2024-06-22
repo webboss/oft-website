@@ -1,7 +1,21 @@
 import PostPreview from "./post-preview";
 import { ArticlePreview } from "./article/preview/article-preview";
 
-export default function MoreStories({ posts }) {
+interface MoreStoriesProps {
+  posts: {
+    node: {
+      slug: string;
+      title: string;
+      featuredImage: {
+        node: {
+          sourceUrl: string;
+        };
+      };
+    };
+  }[];
+}
+
+export default function MoreStories({ posts }: MoreStoriesProps) {
   return (
     <section>
       <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
