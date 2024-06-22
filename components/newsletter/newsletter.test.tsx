@@ -13,6 +13,7 @@ describe("Newsletter", () => {
     expect(emailInput).toBeInTheDocument();
     expect(button).toBeInTheDocument();
   });
+
   test("shows invalid email error on form submit", async () => {
     const user = userEvent.setup();
 
@@ -29,4 +30,15 @@ describe("Newsletter", () => {
     expect(emailError).toBeInTheDocument();
   });
 
+  test("handles form submit", async () => {
+    const user = userEvent.setup();
+
+    render(<Newsletter />);
+
+    const emailInput = screen.getByPlaceholderText("Enter your email");
+    const button = screen.getByRole("button", { name: "" });
+
+    await user.type(emailInput, "no-reply@test.com");
+    await user.click(button);
+  });
 });
