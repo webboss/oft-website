@@ -15,6 +15,19 @@ describe("Article Preview List", () => {
 
     expect(heading).toBeInTheDocument();
   });
+
+  test("renders articles", () => {
+    render(<ArticlePreviewList articles={articles} />);
+
+    articles.map((article) => {
+      const articleTitle = screen.getByRole("heading", {
+        level: 5,
+        name: article.title,
+      });
+
+      expect(articleTitle).toBeInTheDocument();
+    });
+  });
 });
 
 const articles = [
