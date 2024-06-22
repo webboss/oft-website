@@ -15,12 +15,20 @@ describe("Resources", () => {
 
       expect(name).toBeInTheDocument();
       expect(description).toBeInTheDocument();
-
-      if (category.comingSoon) {
-        const comingSoon = screen.getByText("Coming Soon");
-        expect(comingSoon).toBeInTheDocument();
-      }
     });
+  });
+
+  test("shows if a category is not available", () => {
+    render(<Resources allCategoryQuery={CATEGORY_QUERY_RESPONSE} />);
+
+    const comingSoonTexts = screen.queryAllByText("Coming Soon");
+
+    const comingSoonCategories =
+      CATEGORY_QUERY_RESPONSE.categories.nodes.filter(
+        (category) => category.comingSoon
+      );
+
+    expect(comingSoonTexts.length).toEqual(comingSoonCategories.length);
   });
 });
 
