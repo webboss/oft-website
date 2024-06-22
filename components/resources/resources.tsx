@@ -1,8 +1,25 @@
+import Link from "next/link";
 import React from "react";
 import { Text, Container } from "components";
-import Link from "next/link";
 
-export const Resources = ({ allCategoryQuery }) => {
+type Category = {
+  description: string;
+  comingSoon?: any;
+  name: string;
+};
+
+interface ResourcesProps {
+  allCategoryQuery: {
+    categories: {
+      nodes: Category[];
+    };
+    resources: {
+      nodes: any[];
+    };
+  };
+}
+
+export const Resources = ({ allCategoryQuery }: ResourcesProps) => {
   const allCategory = allCategoryQuery.categories.nodes;
 
   const noOfResources = allCategoryQuery.resources.nodes.length;
@@ -36,7 +53,12 @@ export const Resources = ({ allCategoryQuery }) => {
   );
 };
 
-const FeaturedRoadMap = ({ name, description, sectionId, comingSoon }) => {
+const FeaturedRoadMap = ({
+  name,
+  description,
+  sectionId,
+  comingSoon,
+}: { sectionId: string } & Category) => {
   return (
     <Link href={`/resources#${sectionId}`} className="group">
       <div className="text-left py-7 px-6 bg-opacity-5 rounded-[15px] relative bg-white border-2  border-transparent group-hover:border-white/10 transition-all h-full duration-300">
