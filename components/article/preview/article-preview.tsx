@@ -7,7 +7,7 @@ export interface ArticlePreviewProps {
   title: string;
   slug: string;
   featuredImage: {
-    node?: {
+    node: {
       sourceUrl: string;
     };
   };
