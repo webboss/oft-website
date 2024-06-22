@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
-import { ArticlePreview } from "./article-preview";
+import { ArticlePreview } from "@/components/article";
 
 describe("Article Preview", () => {
   const article = {
