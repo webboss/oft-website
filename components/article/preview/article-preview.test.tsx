@@ -26,4 +26,15 @@ describe("Article Preview", () => {
     expect(role).toBeInTheDocument();
     expect(image).toBeInTheDocument();
   });
+
+  test("renders link to article", () => {
+    render(<ArticlePreview {...article} />);
+
+    const link = screen.getByRole("link", {
+      name: "Read story",
+    });
+
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute("href", "/story/article-350");
+  });
 });
