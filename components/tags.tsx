@@ -1,4 +1,8 @@
-export default function Tags({ tags }) {
+interface TagsProps {
+  tags: { edges: { node: { name: string } }[] };
+}
+
+export default function Tags({ tags }: TagsProps) {
   return (
     <div className="max-w-2xl mx-auto">
       <p className="mt-8 text-lg font-bold">
