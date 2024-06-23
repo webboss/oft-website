@@ -1,4 +1,10 @@
-export default function Categories({ categories }) {
+interface CategoriesProps {
+  categories: {
+    edges: any;
+  };
+}
+
+export default function Categories({ categories }: CategoriesProps) {
   return (
     <span className="ml-1">
       under

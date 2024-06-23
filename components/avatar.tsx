@@ -1,6 +1,19 @@
 import Image from "next/image";
 
-export default function Avatar({ author }) {
+interface AvatarProps {
+  author: {
+    node: {
+      firstName?: string;
+      lastName?: string;
+      name?: string;
+      avatar: {
+        url: string;
+      };
+    };
+  };
+}
+
+export default function Avatar({ author }: AvatarProps) {
   const doesAuthorHaveFullName =
     author?.node?.firstName && author?.node?.lastName;
   const name = doesAuthorHaveFullName
