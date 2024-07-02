@@ -1,7 +1,7 @@
 import ctl from "@netlify/classnames-template-literals";
 import Image from "next/image";
 import { NLink, Text } from "components";
-import RightArrowIcon from "svgs/arrow-right.svg";
+import RightArrowIcon from "@/svgs/arrow-right.svg";
 
 const ResourceItem = ({ resource }) => {
   const { title, url, resourceTypes, resourcePayments, featuredImage } =

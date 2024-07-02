@@ -1,7 +1,7 @@
 import { Button, Container, Text } from "components";
-import { ArticlePreviewList } from "components/article";
-import { Hr } from "components/hr";
-import Layout from "components/layout";
+import { ArticlePreviewList } from "@/components/article";
+import { Hr } from "@/components/hr";
+import Layout from "@/components/layout";
 import { graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import { readingTime } from "reading-time-estimator";
@@ -11,7 +11,7 @@ import { sanitize } from "isomorphic-dompurify";
 
 import Share, { popupWindow, url } from "./components/share";
 import CopyButton from "./components/copy-button";
-import { ImageWithMock } from "components/image-with-mock";
+import { ImageWithMock } from "@/components/image-with-mock";
 
 const Blockquote = ({ node }) => {
   const urlLength = `${url}`.length;
@@ -20,7 +20,7 @@ const Blockquote = ({ node }) => {
 
   const firstParagraph = `${node[0].children[0].data}`.substring(
     0,
-    expectedStringLength,
+    expectedStringLength
   );
   return (
     <div
@@ -37,7 +37,7 @@ const Blockquote = ({ node }) => {
         <Button
           onClick={() =>
             popupWindow(
-              `https://twitter.com/share?text=${firstParagraph}&url=${url}`,
+              `https://twitter.com/share?text=${firstParagraph}&url=${url}`
             )
           }
         >

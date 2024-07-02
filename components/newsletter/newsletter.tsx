@@ -1,14 +1,14 @@
 import React from "react";
 
-import { Hr } from "components/hr";
+import { Hr } from "@/components/hr";
 import { Button, Container, Input, Text } from "components";
 import NewsletterPattern from "../../svgs/newsletter-pattern.svg";
 import ArrowIcon from "../../svgs/arrow-right.svg";
 import ctl from "@netlify/classnames-template-literals";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useSubscribersContext } from "context/SubscribersContext";
-import { newsletterSchema } from "utils/validations";
+import { useSubscribersContext } from "@/context/SubscribersContext";
+import { newsletterSchema } from "@/utils/validations";
 import { toast } from "react-toastify";
 
 /*eslint no-useless-escape: "off"*/

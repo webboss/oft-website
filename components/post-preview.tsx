@@ -3,6 +3,28 @@ import Date from "./date";
 import CoverImage from "./cover-image";
 import Link from "next/link";
 
+interface PostPreviewProps {
+  title: string;
+  coverImage?: {
+    node: {
+      sourceUrl: string;
+    };
+  };
+  date: string;
+  excerpt: string;
+  author: {
+    node: {
+      firstName?: string;
+      lastName?: string;
+      name?: string;
+      avatar: {
+        url: string;
+      };
+    };
+  };
+  slug: string;
+}
+
 export default function PostPreview({
   title,
   coverImage,
@@ -10,7 +32,7 @@ export default function PostPreview({
   excerpt,
   author,
   slug,
-}) {
+}: PostPreviewProps) {
   return (
     <div>
       <div className="mb-5">

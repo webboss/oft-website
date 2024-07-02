@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Button, Container, Input, Layout, Newsletter } from "components";
-import { DonateHeader } from "templates/donate";
+import { DonateHeader } from "@/templates/donate";
 import ctl from "@netlify/classnames-template-literals";
 import { useForm } from "react-hook-form";
 import { usePaystackPayment } from "react-paystack";

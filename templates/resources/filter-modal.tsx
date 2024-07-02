@@ -3,7 +3,7 @@ import ctl from "@netlify/classnames-template-literals";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, Modal2 } from "components";
-import { resourcesFilterSchema } from "utils/validations";
+import { resourcesFilterSchema } from "@/utils/validations";
 
 interface ResourceFilterModalProps {
   categories: any[];
@@ -34,7 +34,7 @@ const ResourceFilterModal = ({
   };
 
   return (
-    <Modal2 closeModal={closeModal}>
+    <Modal2 title="FILTER" closeModal={closeModal}>
       <form onSubmit={handleSubmit(onComplete)}>
         <div className="grid md:grid-cols-2 md:gap-y-2 md:gap-x-40">
           <Input

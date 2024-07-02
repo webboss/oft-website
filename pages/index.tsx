@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next";
 import { Layout, Partners, Newsletter } from "components";
 import { getAllCategory, getAllPostsForHome } from "../lib/api";
-import { HomeFeaturedStories, HomeHeader } from "templates/home";
-import { Resources } from "components/resources";
+import { HomeFeaturedStories, HomeHeader } from "@/templates/home";
+import { Resources } from "@/components/resources";
 
 export default function Index({ allPosts: { edges }, allCategory, preview }) {
   const storyNodes = edges.map((edge) => edge.node);

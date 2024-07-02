@@ -3,7 +3,7 @@ import Head from "next/head";
 import "../styles/index.css";
 import localFont from "next/font/local";
 import "react-toastify/dist/ReactToastify.css";
-import SubscribersContextProvider from "context/SubscribersContext";
+import SubscribersContextProvider from "@/context/SubscribersContext";
 import { GoogleAnalytics } from "../components";
 
 const generalSans = localFont({

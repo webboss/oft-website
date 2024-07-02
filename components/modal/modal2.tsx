@@ -1,26 +1,24 @@
 import ctl from "@netlify/classnames-template-literals";
 import { Text } from "components";
-import CloseIcon from "svgs/x-pattern.svg";
+import CloseIcon from "@/svgs/x-pattern.svg";
 
 interface Modal2Props {
   children: React.ReactNode;
   closeModal: () => void;
+  title: string;
 }
 
-const Modal2 = ({
-  children,
-  closeModal,
-}: Modal2Props) => {
+const Modal2 = ({ children, closeModal, title }: Modal2Props) => {
   return (
     <div role="dialog" className={wrapperStyle}>
       <div className="bg-white px-4 py-9 md:p-9 rounded-3xl">
         <div className="flex items-center justify-between mb-10 w-[90%] md:w-full">
-          <Text className="!text-black" value="FILTER" variant="h6" />
+          <Text className="!text-black" value={title} variant="h6" />
           <button onClick={closeModal}>
-            <CloseIcon />
+            <CloseIcon title="Close" />
           </button>
         </div>
-       {children}
+        {children}
       </div>
     </div>
   );

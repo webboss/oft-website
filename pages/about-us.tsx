@@ -4,7 +4,7 @@ import React from "react";
 import { Newsletter, Partners, Layout } from "components";
 
 import ArrowIcon from "../svgs/arrow.svg";
-import { AboutUsHeader, Team } from "templates/about-us";
+import { AboutUsHeader, Team } from "@/templates/about-us";
 import { getAllTeamMembers } from "lib/api";
 
 const AboutPage = ({ allTeamMembers }) => {

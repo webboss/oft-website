@@ -4,13 +4,30 @@ import CoverImage from "./cover-image";
 import PostTitle from "./post-title";
 import Categories from "./categories";
 
+interface PostHeaderProps {
+  title: string;
+  coverImage: { node: { sourceUrl: string } };
+  date: string;
+  author: {
+    node: {
+      firstName?: string;
+      lastName?: string;
+      name?: string;
+      avatar: {
+        url: string;
+      };
+    };
+  };
+  categories: { edges: any };
+}
+
 export default function PostHeader({
   title,
   coverImage,
   date,
   author,
   categories,
-}) {
+}: PostHeaderProps) {
   return (
     <>
       <PostTitle>{title}</PostTitle>
