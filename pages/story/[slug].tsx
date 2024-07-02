@@ -132,7 +132,7 @@ export default function Post({ post, posts, preview }) {
               height={1000}
               alt={`${post?.title}`}
               src={featuredImage?.node.sourceUrl}
-              className="w-full object-top  md:rounded-[100px] rounded-[50px] md:h-auto h-[370px] my-[45px] "
+              className="w-full object-top  md:rounded-[100px] rounded-[50px] h-auto my-[45px] "
             />
           </header>
           <section className="flex md:flex-row flex-col-reverse justify-between relative">
