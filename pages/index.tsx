@@ -3,6 +3,15 @@ import { Layout, Partners, Newsletter } from "components";
 import { getAllCategory, getAllPostsForHome } from "../lib/api";
 import { HomeFeaturedStories, HomeHeader } from "templates/home";
 import { Resources } from "components/resources";
+import dynamic from "next/dynamic";
+
+const DynamicHeader = dynamic(
+  () => import("templates/home").then((mod) => mod.HomeHeader),
+  {
+    loading: () => <p>Loading...</p>,
+    ssr: false,
+  }
+);
 
 export default function Index({ allPosts: { edges }, allCategory, preview }) {
   const storyNodes = edges.map((edge) => edge.node);
@@ -13,7 +22,7 @@ export default function Index({ allPosts: { edges }, allCategory, preview }) {
       ignoreSiteName={true}
       description="Let's help you put a face your career in tech. Through stories, roadmaps, and resources"
     >
-      <HomeHeader />
+      <DynamicHeader />
 
       {storyNodes.length > 0 && <HomeFeaturedStories stories={storyNodes} />}
 
